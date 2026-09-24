@@ -1,0 +1,3 @@
+# Dependency placeholder for UrbanTransit IQ — TransitVerse Intelligence.
+# TODO: Select dependencies and compatible versions after SRS and environment review.
+# No packages are required or installed by this foundation step.
