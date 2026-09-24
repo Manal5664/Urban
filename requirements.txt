@@ -1,3 +1,4 @@
-# Dependency placeholder for UrbanTransit IQ — TransitVerse Intelligence.
-# TODO: Select dependencies and compatible versions after SRS and environment review.
-# No packages are required or installed by this foundation step.
+# Phase 1 dataset generator dependencies.
+# The generator and validation tests use only the Python 3.10 standard library.
+# No package installation is authorized or required for this phase.
+# HDFS/Spark and later DS dependencies remain a separate implementation phase.

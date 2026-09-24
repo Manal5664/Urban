@@ -698,7 +698,7 @@ No conflict was identified between these decisions and the SRS. The approximatel
 
 ## DATASET ARCHITECTURE DESIGN REFERENCES
 
-Dataset architecture phase, 2026-09-24: the official PDF was re-read directly. The following documents now describe proposed implementation, evidence and acceptance checks; they are **design documentation only**, not proof of generated or processed datasets. Existing SRS rows, classifications, numerical minima, statuses and the 544-item count remain unchanged; no implementation requirement is marked DONE.
+Dataset architecture phase, 2026-09-24: the official PDF was re-read directly. The following documents describe the approved design and acceptance checks. Phase 1 now additionally contains an executable deterministic generator, raw smoke package, schema snapshot, and focused validators; these do not change the official SRS rows, classifications, numerical minima, or the 544-item count and do not mark production/application requirements DONE.
 
 | Existing traceability IDs | Planned dataset design reference |
 | --- | --- |
@@ -708,4 +708,4 @@ Dataset architecture phase, 2026-09-24: the official PDF was re-read directly. T
 | STEP-07–49; DATA-04/05; CORE-02; INT-08/09; DEL-07 | [DATASET_ARCHITECTURE.md](documentation/DATASET_ARCHITECTURE.md): all listed feature/analysis derivations, train/validation/test and availability rules, independent raw-to-model pipelines, ≥100 unseen-case requirement with a proposed 1,000-case comparison cohort |
 | STEP-02/03; FR-016–018; DEL-03/04 | [DATASET_ARCHITECTURE.md](documentation/DATASET_ARCHITECTURE.md): proposed CSV/JSONL, HDFS, processed/Parquet, splits, metadata/statistics and quality-report paths; no storage operation performed |
 
-The dataset-specific source inventory contains **245 checks: 170 COVERED BY DESIGN, 67 NEEDS IMPLEMENTATION, 8 AMBIGUOUS, 0 known GAP**. These are a separate design-review inventory, not additional SRS requirements or replacements for the master count. The recovery review keeps the official SRS as the sole authority, makes the fully generated/temporal/counting/G1–G5 decisions explicit, and leaves every runtime artifact at NEEDS IMPLEMENTATION until measured. No generated records, implementation code, package installation, configuration/HDFS operation or commit is part of this phase.
+The dataset-specific source inventory contains **245 checks: 170 COVERED BY DESIGN, 67 NEEDS IMPLEMENTATION, 8 AMBIGUOUS, 0 known GAP**. These are a separate design-review inventory, not additional SRS requirements or replacements for the master count. The recovery review keeps the official SRS as the sole authority and makes the fully generated/temporal/counting/G1–G5 decisions explicit. Phase 1 smoke code and evidence do not satisfy the remaining production, independent cleaning, HDFS/Spark, Parquet, application, or model delivery requirements.

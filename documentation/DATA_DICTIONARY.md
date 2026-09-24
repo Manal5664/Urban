@@ -1,6 +1,6 @@
 # UrbanTransit IQ data dictionary
 
-Version 2 — 2026-09-24 — **proposed schemas only, no generated records or implemented constraints**. Read with [architecture](DATASET_ARCHITECTURE.md) and [generation plan](DATA_GENERATION_PLAN.md). The official SRS v1.0 PDF is the sole authority; MASTER_SRS_CHECKLIST.md is a derived tracker; these documents are implementation design; the physical schema, extensions and types below are project decisions supporting its requirements.
+Version 2 — 2026-09-24 — **executable Phase 1 schema and raw smoke output; accepted production/clean projections remain future work**. Read with [architecture](DATASET_ARCHITECTURE.md) and [generation plan](DATA_GENERATION_PLAN.md). The official SRS v1.0 PDF is the sole authority; MASTER_SRS_CHECKLIST.md is a derived tracker; these documents are implementation design; the physical schema, extensions and types below are project decisions supporting its requirements.
 
 ## Global contracts
 

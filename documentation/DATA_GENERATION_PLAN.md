@@ -159,6 +159,12 @@ Hidden data's exact schema and formats are unspecified. A documented adapter bou
 
 ## Submission and validation evidence plan
 
+The Phase 1 generator, raw smoke package, schema snapshot, and focused
+validators now exist under `data_generator/` and `sample_data/smoke/`.  The
+delivery statuses below remain conservative: the smoke fixtures do not replace
+independent cleaning, production-scale measurements, Parquet/HDFS artifacts, or
+model evidence.
+
 | Official dataset artifact, §1.10(3) pp.45–46 | Planned artifact / acceptance; present state |
 | --- | --- |
 | Data-generation scripts | data_generator/ source + seed/config/provenance instructions; NEEDS IMPLEMENTATION |

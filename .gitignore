@@ -44,6 +44,7 @@ credentials.*.json
 *.key
 
 # Generated datasets (retain directory placeholders)
+/sample_data/smoke/
 /raw_data/**
 !/raw_data/**/
 !/raw_data/**/.gitkeep

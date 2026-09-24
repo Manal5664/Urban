@@ -249,7 +249,7 @@ These are **paths to create later**, not existing outputs or executed HDFS comma
 | Data-quality report | reports/data_quality/<version>/<pipeline>/{summary.md,issue_counts.csv,reconciliation.json} | /urbantransit/datasets/<version>/reports/<pipeline>/data_quality/... |
 | Detailed audit | processed_data/<version>/<pipeline>/audit/{dq_issues,dq_record_outcomes}/... | Parquet audit tables, partition by source table/month/run; immutable raw linked |
 | Raw samples | sample_data/<version>/raw/<table>/... | Optional mirrored sample location; include intentionally defective and valid records with labels separate |
-| Generation code (future) | data_generator/ | Submitted source and version/seed/config instructions; no generator created now |
+| Generation code | data_generator/ | Phase 1 modular source and version/seed/config instructions; smoke output exists, while production generation is not run |
 | Private test oracle (future) | tests/fixtures/<version>/oracle/ with restricted training exclusion | Separate evaluator/test location; never under model feature scan roots |
 
 CSV uses UTF-8, a header, RFC4180 quoting, explicit `\N` null token, decimal dot, ISO dates/UTC timestamps; literal backslash strings escaped per documented contract. JSONL uses explicit JSON null. Dirty raw timestamp/count values may be malformed strings: retain them losslessly, parse into typed staging with issue capture. Store required CSV and JSON datasets, not JSON metadata alone as the only JSON demonstration. Typed clean timestamps are UTC microseconds; IDs are strings, counts int64, money decimal(12,2), coordinates decimal(10,7), booleans true/false. Do not rely on float money or inferred production types.
@@ -260,7 +260,7 @@ Do not commit full generated outputs by default. The existing Git ignore rules a
 
 ## Design acceptance and remaining limitations
 
-This revision resolves G1–G5 as documentation contracts: phase-specific vehicle attribution and separate transfers; stable departure identity and plan revisions; correction-aware feature availability; complete count constraints; and explicit partial-data/canonical-FK semantics. Focused design acceptance cases are in DATA_GENERATION_PLAN.md. No generator, cleaning, feature, model or runtime acceptance test has been implemented or run.
+This revision resolves G1–G5 as documentation contracts: phase-specific vehicle attribution and separate transfers; stable departure identity and plan revisions; correction-aware feature availability; complete count constraints; and explicit partial-data/canonical-FK semantics. Focused design acceptance cases are in DATA_GENERATION_PLAN.md. The Phase 1 generator, smoke package, and focused validators are implemented and run; independent cleaning, production-scale generation, HDFS/Spark, feature, model, and runtime acceptance remain unexecuted.
 
 All official numerical minima remain unchanged. Source ambiguities already recorded (trip-level passenger grain, “multiple”, illustrative lists, hidden schemas and source wording inconsistencies) remain visible without inventing requirements. The current source choice is fully generated/reproducible; there is no external-data selection blocker. An unknown future hidden schema requires the explicit adapter/capability handling below, not fabricated fields. No concrete G1–G5 design gap remains after the focused consistency check; runtime correctness, realism, memory/disk feasibility and ML acceptance still require future implementation and measured validation.
 
