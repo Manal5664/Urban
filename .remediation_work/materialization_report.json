@@ -1,0 +1,2787 @@
+{
+  "changed_files": [
+    {
+      "bytes": 50739312,
+      "changed_rows": 744,
+      "path": "raw/demand_requests/part-000.csv",
+      "shard": "part-000.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 792,
+      "path": "raw/demand_requests/part-001.csv",
+      "shard": "part-001.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 782,
+      "path": "raw/demand_requests/part-002.csv",
+      "shard": "part-002.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 743,
+      "path": "raw/demand_requests/part-003.csv",
+      "shard": "part-003.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 761,
+      "path": "raw/demand_requests/part-004.csv",
+      "shard": "part-004.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 822,
+      "path": "raw/demand_requests/part-005.csv",
+      "shard": "part-005.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 892,
+      "path": "raw/demand_requests/part-006.csv",
+      "shard": "part-006.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 805,
+      "path": "raw/demand_requests/part-007.csv",
+      "shard": "part-007.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 878,
+      "path": "raw/demand_requests/part-008.csv",
+      "shard": "part-008.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 836,
+      "path": "raw/demand_requests/part-009.csv",
+      "shard": "part-009.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 780,
+      "path": "raw/demand_requests/part-010.csv",
+      "shard": "part-010.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 823,
+      "path": "raw/demand_requests/part-011.csv",
+      "shard": "part-011.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 891,
+      "path": "raw/demand_requests/part-012.csv",
+      "shard": "part-012.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 848,
+      "path": "raw/demand_requests/part-013.csv",
+      "shard": "part-013.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 838,
+      "path": "raw/demand_requests/part-014.csv",
+      "shard": "part-014.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 813,
+      "path": "raw/demand_requests/part-015.csv",
+      "shard": "part-015.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 876,
+      "path": "raw/demand_requests/part-016.csv",
+      "shard": "part-016.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 843,
+      "path": "raw/demand_requests/part-017.csv",
+      "shard": "part-017.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 842,
+      "path": "raw/demand_requests/part-018.csv",
+      "shard": "part-018.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 829,
+      "path": "raw/demand_requests/part-019.csv",
+      "shard": "part-019.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 885,
+      "path": "raw/demand_requests/part-020.csv",
+      "shard": "part-020.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 824,
+      "path": "raw/demand_requests/part-021.csv",
+      "shard": "part-021.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 804,
+      "path": "raw/demand_requests/part-022.csv",
+      "shard": "part-022.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 848,
+      "path": "raw/demand_requests/part-023.csv",
+      "shard": "part-023.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 835,
+      "path": "raw/demand_requests/part-024.csv",
+      "shard": "part-024.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 855,
+      "path": "raw/demand_requests/part-025.csv",
+      "shard": "part-025.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 908,
+      "path": "raw/demand_requests/part-026.csv",
+      "shard": "part-026.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 934,
+      "path": "raw/demand_requests/part-027.csv",
+      "shard": "part-027.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 813,
+      "path": "raw/demand_requests/part-028.csv",
+      "shard": "part-028.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 893,
+      "path": "raw/demand_requests/part-029.csv",
+      "shard": "part-029.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 874,
+      "path": "raw/demand_requests/part-030.csv",
+      "shard": "part-030.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 766,
+      "path": "raw/demand_requests/part-031.csv",
+      "shard": "part-031.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 29,
+      "path": "raw/demand_requests/part-032.csv",
+      "shard": "part-032.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 20,
+      "path": "raw/demand_requests/part-033.csv",
+      "shard": "part-033.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 38,
+      "path": "raw/demand_requests/part-034.csv",
+      "shard": "part-034.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 25,
+      "path": "raw/demand_requests/part-035.csv",
+      "shard": "part-035.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 18,
+      "path": "raw/demand_requests/part-036.csv",
+      "shard": "part-036.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 25,
+      "path": "raw/demand_requests/part-037.csv",
+      "shard": "part-037.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 28,
+      "path": "raw/demand_requests/part-038.csv",
+      "shard": "part-038.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 35,
+      "path": "raw/demand_requests/part-039.csv",
+      "shard": "part-039.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 31,
+      "path": "raw/demand_requests/part-040.csv",
+      "shard": "part-040.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 28,
+      "path": "raw/demand_requests/part-041.csv",
+      "shard": "part-041.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 30,
+      "path": "raw/demand_requests/part-042.csv",
+      "shard": "part-042.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 34,
+      "path": "raw/demand_requests/part-043.csv",
+      "shard": "part-043.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 38,
+      "path": "raw/demand_requests/part-044.csv",
+      "shard": "part-044.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 34,
+      "path": "raw/demand_requests/part-045.csv",
+      "shard": "part-045.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 31,
+      "path": "raw/demand_requests/part-046.csv",
+      "shard": "part-046.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 32,
+      "path": "raw/demand_requests/part-047.csv",
+      "shard": "part-047.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 31,
+      "path": "raw/demand_requests/part-048.csv",
+      "shard": "part-048.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 38,
+      "path": "raw/demand_requests/part-049.csv",
+      "shard": "part-049.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 33,
+      "path": "raw/demand_requests/part-050.csv",
+      "shard": "part-050.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 26,
+      "path": "raw/demand_requests/part-051.csv",
+      "shard": "part-051.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 31,
+      "path": "raw/demand_requests/part-052.csv",
+      "shard": "part-052.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 28,
+      "path": "raw/demand_requests/part-053.csv",
+      "shard": "part-053.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 30,
+      "path": "raw/demand_requests/part-054.csv",
+      "shard": "part-054.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 30,
+      "path": "raw/demand_requests/part-055.csv",
+      "shard": "part-055.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 28,
+      "path": "raw/demand_requests/part-056.csv",
+      "shard": "part-056.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 27,
+      "path": "raw/demand_requests/part-057.csv",
+      "shard": "part-057.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 34,
+      "path": "raw/demand_requests/part-058.csv",
+      "shard": "part-058.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 25,
+      "path": "raw/demand_requests/part-059.csv",
+      "shard": "part-059.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 24,
+      "path": "raw/demand_requests/part-060.csv",
+      "shard": "part-060.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 33,
+      "path": "raw/demand_requests/part-061.csv",
+      "shard": "part-061.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 27,
+      "path": "raw/demand_requests/part-062.csv",
+      "shard": "part-062.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 29,
+      "path": "raw/demand_requests/part-063.csv",
+      "shard": "part-063.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 28,
+      "path": "raw/demand_requests/part-064.csv",
+      "shard": "part-064.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 22,
+      "path": "raw/demand_requests/part-065.csv",
+      "shard": "part-065.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 23,
+      "path": "raw/demand_requests/part-066.csv",
+      "shard": "part-066.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 92,
+      "path": "raw/demand_requests/part-067.csv",
+      "shard": "part-067.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 27,
+      "path": "raw/demand_requests/part-068.csv",
+      "shard": "part-068.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 38,
+      "path": "raw/demand_requests/part-069.csv",
+      "shard": "part-069.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 37,
+      "path": "raw/demand_requests/part-070.csv",
+      "shard": "part-070.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 33,
+      "path": "raw/demand_requests/part-071.csv",
+      "shard": "part-071.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 43,
+      "path": "raw/demand_requests/part-072.csv",
+      "shard": "part-072.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 36,
+      "path": "raw/demand_requests/part-073.csv",
+      "shard": "part-073.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 31,
+      "path": "raw/demand_requests/part-074.csv",
+      "shard": "part-074.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 35,
+      "path": "raw/demand_requests/part-075.csv",
+      "shard": "part-075.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 30,
+      "path": "raw/demand_requests/part-076.csv",
+      "shard": "part-076.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 34,
+      "path": "raw/demand_requests/part-077.csv",
+      "shard": "part-077.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 214,
+      "path": "raw/demand_requests/part-078.csv",
+      "shard": "part-078.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 1682,
+      "path": "raw/demand_requests/part-079.csv",
+      "shard": "part-079.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 1618,
+      "path": "raw/demand_requests/part-080.csv",
+      "shard": "part-080.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 1645,
+      "path": "raw/demand_requests/part-081.csv",
+      "shard": "part-081.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 1582,
+      "path": "raw/demand_requests/part-082.csv",
+      "shard": "part-082.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 1493,
+      "path": "raw/demand_requests/part-083.csv",
+      "shard": "part-083.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 1616,
+      "path": "raw/demand_requests/part-084.csv",
+      "shard": "part-084.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 1606,
+      "path": "raw/demand_requests/part-085.csv",
+      "shard": "part-085.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 1584,
+      "path": "raw/demand_requests/part-086.csv",
+      "shard": "part-086.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 1692,
+      "path": "raw/demand_requests/part-087.csv",
+      "shard": "part-087.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 1602,
+      "path": "raw/demand_requests/part-088.csv",
+      "shard": "part-088.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 1622,
+      "path": "raw/demand_requests/part-089.csv",
+      "shard": "part-089.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 1692,
+      "path": "raw/demand_requests/part-090.csv",
+      "shard": "part-090.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 1599,
+      "path": "raw/demand_requests/part-091.csv",
+      "shard": "part-091.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 1572,
+      "path": "raw/demand_requests/part-092.csv",
+      "shard": "part-092.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 1762,
+      "path": "raw/demand_requests/part-093.csv",
+      "shard": "part-093.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739312,
+      "changed_rows": 1911,
+      "path": "raw/demand_requests/part-094.csv",
+      "shard": "part-094.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 50739330,
+      "changed_rows": 1622,
+      "path": "raw/demand_requests/part-095.csv",
+      "shard": "part-095.csv",
+      "table": "demand_requests"
+    },
+    {
+      "bytes": 49247027,
+      "changed_rows": 96,
+      "path": "raw/passenger_counts/part-000.csv",
+      "shard": "part-000.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49247175,
+      "changed_rows": 99,
+      "path": "raw/passenger_counts/part-001.csv",
+      "shard": "part-001.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49247691,
+      "changed_rows": 76,
+      "path": "raw/passenger_counts/part-002.csv",
+      "shard": "part-002.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49247301,
+      "changed_rows": 106,
+      "path": "raw/passenger_counts/part-003.csv",
+      "shard": "part-003.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49247019,
+      "changed_rows": 104,
+      "path": "raw/passenger_counts/part-004.csv",
+      "shard": "part-004.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49247145,
+      "changed_rows": 184,
+      "path": "raw/passenger_counts/part-005.csv",
+      "shard": "part-005.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49247655,
+      "changed_rows": 110,
+      "path": "raw/passenger_counts/part-006.csv",
+      "shard": "part-006.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49247885,
+      "changed_rows": 136,
+      "path": "raw/passenger_counts/part-007.csv",
+      "shard": "part-007.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49248361,
+      "changed_rows": 212,
+      "path": "raw/passenger_counts/part-008.csv",
+      "shard": "part-008.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49248341,
+      "changed_rows": 206,
+      "path": "raw/passenger_counts/part-009.csv",
+      "shard": "part-009.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49249971,
+      "changed_rows": 153,
+      "path": "raw/passenger_counts/part-010.csv",
+      "shard": "part-010.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49249279,
+      "changed_rows": 184,
+      "path": "raw/passenger_counts/part-011.csv",
+      "shard": "part-011.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49250039,
+      "changed_rows": 193,
+      "path": "raw/passenger_counts/part-012.csv",
+      "shard": "part-012.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49250079,
+      "changed_rows": 173,
+      "path": "raw/passenger_counts/part-013.csv",
+      "shard": "part-013.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49250469,
+      "changed_rows": 215,
+      "path": "raw/passenger_counts/part-014.csv",
+      "shard": "part-014.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49249785,
+      "changed_rows": 167,
+      "path": "raw/passenger_counts/part-015.csv",
+      "shard": "part-015.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49249901,
+      "changed_rows": 138,
+      "path": "raw/passenger_counts/part-016.csv",
+      "shard": "part-016.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49249615,
+      "changed_rows": 129,
+      "path": "raw/passenger_counts/part-017.csv",
+      "shard": "part-017.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49249453,
+      "changed_rows": 134,
+      "path": "raw/passenger_counts/part-018.csv",
+      "shard": "part-018.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49250081,
+      "changed_rows": 182,
+      "path": "raw/passenger_counts/part-019.csv",
+      "shard": "part-019.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49252071,
+      "changed_rows": 155,
+      "path": "raw/passenger_counts/part-020.csv",
+      "shard": "part-020.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49253127,
+      "changed_rows": 248,
+      "path": "raw/passenger_counts/part-021.csv",
+      "shard": "part-021.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49252595,
+      "changed_rows": 227,
+      "path": "raw/passenger_counts/part-022.csv",
+      "shard": "part-022.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49253011,
+      "changed_rows": 169,
+      "path": "raw/passenger_counts/part-023.csv",
+      "shard": "part-023.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49252521,
+      "changed_rows": 218,
+      "path": "raw/passenger_counts/part-024.csv",
+      "shard": "part-024.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49254187,
+      "changed_rows": 217,
+      "path": "raw/passenger_counts/part-025.csv",
+      "shard": "part-025.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49254895,
+      "changed_rows": 220,
+      "path": "raw/passenger_counts/part-026.csv",
+      "shard": "part-026.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49253993,
+      "changed_rows": 157,
+      "path": "raw/passenger_counts/part-027.csv",
+      "shard": "part-027.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49253471,
+      "changed_rows": 192,
+      "path": "raw/passenger_counts/part-028.csv",
+      "shard": "part-028.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49252715,
+      "changed_rows": 159,
+      "path": "raw/passenger_counts/part-029.csv",
+      "shard": "part-029.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49253067,
+      "changed_rows": 125,
+      "path": "raw/passenger_counts/part-030.csv",
+      "shard": "part-030.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49250495,
+      "changed_rows": 208,
+      "path": "raw/passenger_counts/part-031.csv",
+      "shard": "part-031.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49251267,
+      "changed_rows": 125,
+      "path": "raw/passenger_counts/part-032.csv",
+      "shard": "part-032.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49249617,
+      "changed_rows": 171,
+      "path": "raw/passenger_counts/part-033.csv",
+      "shard": "part-033.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49249699,
+      "changed_rows": 151,
+      "path": "raw/passenger_counts/part-034.csv",
+      "shard": "part-034.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49249865,
+      "changed_rows": 109,
+      "path": "raw/passenger_counts/part-035.csv",
+      "shard": "part-035.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49249507,
+      "changed_rows": 117,
+      "path": "raw/passenger_counts/part-036.csv",
+      "shard": "part-036.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49251035,
+      "changed_rows": 201,
+      "path": "raw/passenger_counts/part-037.csv",
+      "shard": "part-037.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49249997,
+      "changed_rows": 178,
+      "path": "raw/passenger_counts/part-038.csv",
+      "shard": "part-038.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49249529,
+      "changed_rows": 160,
+      "path": "raw/passenger_counts/part-039.csv",
+      "shard": "part-039.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49250123,
+      "changed_rows": 164,
+      "path": "raw/passenger_counts/part-040.csv",
+      "shard": "part-040.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49250153,
+      "changed_rows": 164,
+      "path": "raw/passenger_counts/part-041.csv",
+      "shard": "part-041.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49250927,
+      "changed_rows": 198,
+      "path": "raw/passenger_counts/part-042.csv",
+      "shard": "part-042.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49252055,
+      "changed_rows": 208,
+      "path": "raw/passenger_counts/part-043.csv",
+      "shard": "part-043.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49251395,
+      "changed_rows": 219,
+      "path": "raw/passenger_counts/part-044.csv",
+      "shard": "part-044.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49251437,
+      "changed_rows": 208,
+      "path": "raw/passenger_counts/part-045.csv",
+      "shard": "part-045.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49251351,
+      "changed_rows": 211,
+      "path": "raw/passenger_counts/part-046.csv",
+      "shard": "part-046.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49252941,
+      "changed_rows": 169,
+      "path": "raw/passenger_counts/part-047.csv",
+      "shard": "part-047.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49253169,
+      "changed_rows": 224,
+      "path": "raw/passenger_counts/part-048.csv",
+      "shard": "part-048.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49254557,
+      "changed_rows": 207,
+      "path": "raw/passenger_counts/part-049.csv",
+      "shard": "part-049.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49253579,
+      "changed_rows": 200,
+      "path": "raw/passenger_counts/part-050.csv",
+      "shard": "part-050.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49252787,
+      "changed_rows": 171,
+      "path": "raw/passenger_counts/part-051.csv",
+      "shard": "part-051.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49251579,
+      "changed_rows": 171,
+      "path": "raw/passenger_counts/part-052.csv",
+      "shard": "part-052.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49249589,
+      "changed_rows": 133,
+      "path": "raw/passenger_counts/part-053.csv",
+      "shard": "part-053.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49249949,
+      "changed_rows": 207,
+      "path": "raw/passenger_counts/part-054.csv",
+      "shard": "part-054.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49250327,
+      "changed_rows": 160,
+      "path": "raw/passenger_counts/part-055.csv",
+      "shard": "part-055.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49249623,
+      "changed_rows": 204,
+      "path": "raw/passenger_counts/part-056.csv",
+      "shard": "part-056.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49248469,
+      "changed_rows": 141,
+      "path": "raw/passenger_counts/part-057.csv",
+      "shard": "part-057.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49247587,
+      "changed_rows": 166,
+      "path": "raw/passenger_counts/part-058.csv",
+      "shard": "part-058.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49246971,
+      "changed_rows": 130,
+      "path": "raw/passenger_counts/part-059.csv",
+      "shard": "part-059.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49247761,
+      "changed_rows": 134,
+      "path": "raw/passenger_counts/part-060.csv",
+      "shard": "part-060.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49247369,
+      "changed_rows": 180,
+      "path": "raw/passenger_counts/part-061.csv",
+      "shard": "part-061.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49247203,
+      "changed_rows": 136,
+      "path": "raw/passenger_counts/part-062.csv",
+      "shard": "part-062.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49247359,
+      "changed_rows": 102,
+      "path": "raw/passenger_counts/part-063.csv",
+      "shard": "part-063.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49246675,
+      "changed_rows": 141,
+      "path": "raw/passenger_counts/part-064.csv",
+      "shard": "part-064.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49247213,
+      "changed_rows": 98,
+      "path": "raw/passenger_counts/part-065.csv",
+      "shard": "part-065.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49247655,
+      "changed_rows": 2817,
+      "path": "raw/passenger_counts/part-066.csv",
+      "shard": "part-066.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49247537,
+      "changed_rows": 1406,
+      "path": "raw/passenger_counts/part-067.csv",
+      "shard": "part-067.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49247421,
+      "changed_rows": 175,
+      "path": "raw/passenger_counts/part-068.csv",
+      "shard": "part-068.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49247511,
+      "changed_rows": 244,
+      "path": "raw/passenger_counts/part-069.csv",
+      "shard": "part-069.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49247357,
+      "changed_rows": 195,
+      "path": "raw/passenger_counts/part-070.csv",
+      "shard": "part-070.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49248197,
+      "changed_rows": 266,
+      "path": "raw/passenger_counts/part-071.csv",
+      "shard": "part-071.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49248365,
+      "changed_rows": 261,
+      "path": "raw/passenger_counts/part-072.csv",
+      "shard": "part-072.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49250077,
+      "changed_rows": 219,
+      "path": "raw/passenger_counts/part-073.csv",
+      "shard": "part-073.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49249015,
+      "changed_rows": 193,
+      "path": "raw/passenger_counts/part-074.csv",
+      "shard": "part-074.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49249731,
+      "changed_rows": 147,
+      "path": "raw/passenger_counts/part-075.csv",
+      "shard": "part-075.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49250119,
+      "changed_rows": 247,
+      "path": "raw/passenger_counts/part-076.csv",
+      "shard": "part-076.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49249141,
+      "changed_rows": 153,
+      "path": "raw/passenger_counts/part-077.csv",
+      "shard": "part-077.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49251291,
+      "changed_rows": 142,
+      "path": "raw/passenger_counts/part-078.csv",
+      "shard": "part-078.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49249827,
+      "changed_rows": 168,
+      "path": "raw/passenger_counts/part-079.csv",
+      "shard": "part-079.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49249973,
+      "changed_rows": 177,
+      "path": "raw/passenger_counts/part-080.csv",
+      "shard": "part-080.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49250125,
+      "changed_rows": 127,
+      "path": "raw/passenger_counts/part-081.csv",
+      "shard": "part-081.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49249513,
+      "changed_rows": 144,
+      "path": "raw/passenger_counts/part-082.csv",
+      "shard": "part-082.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49251317,
+      "changed_rows": 208,
+      "path": "raw/passenger_counts/part-083.csv",
+      "shard": "part-083.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49254141,
+      "changed_rows": 245,
+      "path": "raw/passenger_counts/part-084.csv",
+      "shard": "part-084.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49253055,
+      "changed_rows": 245,
+      "path": "raw/passenger_counts/part-085.csv",
+      "shard": "part-085.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49252655,
+      "changed_rows": 173,
+      "path": "raw/passenger_counts/part-086.csv",
+      "shard": "part-086.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49252603,
+      "changed_rows": 256,
+      "path": "raw/passenger_counts/part-087.csv",
+      "shard": "part-087.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49253105,
+      "changed_rows": 239,
+      "path": "raw/passenger_counts/part-088.csv",
+      "shard": "part-088.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49254691,
+      "changed_rows": 236,
+      "path": "raw/passenger_counts/part-089.csv",
+      "shard": "part-089.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49254211,
+      "changed_rows": 280,
+      "path": "raw/passenger_counts/part-090.csv",
+      "shard": "part-090.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49253571,
+      "changed_rows": 166,
+      "path": "raw/passenger_counts/part-091.csv",
+      "shard": "part-091.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49253365,
+      "changed_rows": 195,
+      "path": "raw/passenger_counts/part-092.csv",
+      "shard": "part-092.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 49253625,
+      "changed_rows": 103,
+      "path": "raw/passenger_counts/part-093.csv",
+      "shard": "part-093.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 2463635,
+      "changed_rows": 23,
+      "path": "raw/passenger_counts/part-094.csv",
+      "shard": "part-094.csv",
+      "table": "passenger_counts"
+    },
+    {
+      "bytes": 61764094,
+      "changed_rows": 25,
+      "path": "raw/passenger_journeys/part-000.csv",
+      "shard": "part-000.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 18,
+      "path": "raw/passenger_journeys/part-001.csv",
+      "shard": "part-001.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 15,
+      "path": "raw/passenger_journeys/part-002.csv",
+      "shard": "part-002.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 25,
+      "path": "raw/passenger_journeys/part-003.csv",
+      "shard": "part-003.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 20,
+      "path": "raw/passenger_journeys/part-004.csv",
+      "shard": "part-004.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 35,
+      "path": "raw/passenger_journeys/part-005.csv",
+      "shard": "part-005.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 28,
+      "path": "raw/passenger_journeys/part-006.csv",
+      "shard": "part-006.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 28,
+      "path": "raw/passenger_journeys/part-007.csv",
+      "shard": "part-007.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 33,
+      "path": "raw/passenger_journeys/part-008.csv",
+      "shard": "part-008.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 30,
+      "path": "raw/passenger_journeys/part-009.csv",
+      "shard": "part-009.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 29,
+      "path": "raw/passenger_journeys/part-010.csv",
+      "shard": "part-010.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 34,
+      "path": "raw/passenger_journeys/part-011.csv",
+      "shard": "part-011.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 26,
+      "path": "raw/passenger_journeys/part-012.csv",
+      "shard": "part-012.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 31,
+      "path": "raw/passenger_journeys/part-013.csv",
+      "shard": "part-013.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 30,
+      "path": "raw/passenger_journeys/part-014.csv",
+      "shard": "part-014.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 28,
+      "path": "raw/passenger_journeys/part-015.csv",
+      "shard": "part-015.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 20,
+      "path": "raw/passenger_journeys/part-016.csv",
+      "shard": "part-016.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 29,
+      "path": "raw/passenger_journeys/part-017.csv",
+      "shard": "part-017.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 22,
+      "path": "raw/passenger_journeys/part-018.csv",
+      "shard": "part-018.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 29,
+      "path": "raw/passenger_journeys/part-019.csv",
+      "shard": "part-019.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 29,
+      "path": "raw/passenger_journeys/part-020.csv",
+      "shard": "part-020.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 29,
+      "path": "raw/passenger_journeys/part-021.csv",
+      "shard": "part-021.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 30,
+      "path": "raw/passenger_journeys/part-022.csv",
+      "shard": "part-022.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 39,
+      "path": "raw/passenger_journeys/part-023.csv",
+      "shard": "part-023.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 34,
+      "path": "raw/passenger_journeys/part-024.csv",
+      "shard": "part-024.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 27,
+      "path": "raw/passenger_journeys/part-025.csv",
+      "shard": "part-025.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 32,
+      "path": "raw/passenger_journeys/part-026.csv",
+      "shard": "part-026.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 31,
+      "path": "raw/passenger_journeys/part-027.csv",
+      "shard": "part-027.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 33,
+      "path": "raw/passenger_journeys/part-028.csv",
+      "shard": "part-028.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 30,
+      "path": "raw/passenger_journeys/part-029.csv",
+      "shard": "part-029.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 30,
+      "path": "raw/passenger_journeys/part-030.csv",
+      "shard": "part-030.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 22,
+      "path": "raw/passenger_journeys/part-031.csv",
+      "shard": "part-031.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 29,
+      "path": "raw/passenger_journeys/part-032.csv",
+      "shard": "part-032.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 20,
+      "path": "raw/passenger_journeys/part-033.csv",
+      "shard": "part-033.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 38,
+      "path": "raw/passenger_journeys/part-034.csv",
+      "shard": "part-034.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 25,
+      "path": "raw/passenger_journeys/part-035.csv",
+      "shard": "part-035.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 18,
+      "path": "raw/passenger_journeys/part-036.csv",
+      "shard": "part-036.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 25,
+      "path": "raw/passenger_journeys/part-037.csv",
+      "shard": "part-037.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 28,
+      "path": "raw/passenger_journeys/part-038.csv",
+      "shard": "part-038.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 35,
+      "path": "raw/passenger_journeys/part-039.csv",
+      "shard": "part-039.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 31,
+      "path": "raw/passenger_journeys/part-040.csv",
+      "shard": "part-040.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 28,
+      "path": "raw/passenger_journeys/part-041.csv",
+      "shard": "part-041.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 30,
+      "path": "raw/passenger_journeys/part-042.csv",
+      "shard": "part-042.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 34,
+      "path": "raw/passenger_journeys/part-043.csv",
+      "shard": "part-043.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 38,
+      "path": "raw/passenger_journeys/part-044.csv",
+      "shard": "part-044.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 34,
+      "path": "raw/passenger_journeys/part-045.csv",
+      "shard": "part-045.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 31,
+      "path": "raw/passenger_journeys/part-046.csv",
+      "shard": "part-046.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 32,
+      "path": "raw/passenger_journeys/part-047.csv",
+      "shard": "part-047.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 31,
+      "path": "raw/passenger_journeys/part-048.csv",
+      "shard": "part-048.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 38,
+      "path": "raw/passenger_journeys/part-049.csv",
+      "shard": "part-049.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 33,
+      "path": "raw/passenger_journeys/part-050.csv",
+      "shard": "part-050.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 26,
+      "path": "raw/passenger_journeys/part-051.csv",
+      "shard": "part-051.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 31,
+      "path": "raw/passenger_journeys/part-052.csv",
+      "shard": "part-052.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 28,
+      "path": "raw/passenger_journeys/part-053.csv",
+      "shard": "part-053.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 30,
+      "path": "raw/passenger_journeys/part-054.csv",
+      "shard": "part-054.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 30,
+      "path": "raw/passenger_journeys/part-055.csv",
+      "shard": "part-055.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 28,
+      "path": "raw/passenger_journeys/part-056.csv",
+      "shard": "part-056.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 27,
+      "path": "raw/passenger_journeys/part-057.csv",
+      "shard": "part-057.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 34,
+      "path": "raw/passenger_journeys/part-058.csv",
+      "shard": "part-058.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 25,
+      "path": "raw/passenger_journeys/part-059.csv",
+      "shard": "part-059.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 24,
+      "path": "raw/passenger_journeys/part-060.csv",
+      "shard": "part-060.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 33,
+      "path": "raw/passenger_journeys/part-061.csv",
+      "shard": "part-061.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 27,
+      "path": "raw/passenger_journeys/part-062.csv",
+      "shard": "part-062.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 29,
+      "path": "raw/passenger_journeys/part-063.csv",
+      "shard": "part-063.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 28,
+      "path": "raw/passenger_journeys/part-064.csv",
+      "shard": "part-064.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 22,
+      "path": "raw/passenger_journeys/part-065.csv",
+      "shard": "part-065.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 23,
+      "path": "raw/passenger_journeys/part-066.csv",
+      "shard": "part-066.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 92,
+      "path": "raw/passenger_journeys/part-067.csv",
+      "shard": "part-067.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 27,
+      "path": "raw/passenger_journeys/part-068.csv",
+      "shard": "part-068.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 38,
+      "path": "raw/passenger_journeys/part-069.csv",
+      "shard": "part-069.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 37,
+      "path": "raw/passenger_journeys/part-070.csv",
+      "shard": "part-070.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 33,
+      "path": "raw/passenger_journeys/part-071.csv",
+      "shard": "part-071.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 43,
+      "path": "raw/passenger_journeys/part-072.csv",
+      "shard": "part-072.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 36,
+      "path": "raw/passenger_journeys/part-073.csv",
+      "shard": "part-073.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 31,
+      "path": "raw/passenger_journeys/part-074.csv",
+      "shard": "part-074.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 35,
+      "path": "raw/passenger_journeys/part-075.csv",
+      "shard": "part-075.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 30,
+      "path": "raw/passenger_journeys/part-076.csv",
+      "shard": "part-076.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 34,
+      "path": "raw/passenger_journeys/part-077.csv",
+      "shard": "part-077.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 27,
+      "path": "raw/passenger_journeys/part-078.csv",
+      "shard": "part-078.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 29,
+      "path": "raw/passenger_journeys/part-079.csv",
+      "shard": "part-079.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 24,
+      "path": "raw/passenger_journeys/part-080.csv",
+      "shard": "part-080.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 26,
+      "path": "raw/passenger_journeys/part-081.csv",
+      "shard": "part-081.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 26,
+      "path": "raw/passenger_journeys/part-082.csv",
+      "shard": "part-082.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 32,
+      "path": "raw/passenger_journeys/part-083.csv",
+      "shard": "part-083.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 39,
+      "path": "raw/passenger_journeys/part-084.csv",
+      "shard": "part-084.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 35,
+      "path": "raw/passenger_journeys/part-085.csv",
+      "shard": "part-085.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 44,
+      "path": "raw/passenger_journeys/part-086.csv",
+      "shard": "part-086.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 29,
+      "path": "raw/passenger_journeys/part-087.csv",
+      "shard": "part-087.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 36,
+      "path": "raw/passenger_journeys/part-088.csv",
+      "shard": "part-088.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 35,
+      "path": "raw/passenger_journeys/part-089.csv",
+      "shard": "part-089.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 31,
+      "path": "raw/passenger_journeys/part-090.csv",
+      "shard": "part-090.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 35,
+      "path": "raw/passenger_journeys/part-091.csv",
+      "shard": "part-091.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 33,
+      "path": "raw/passenger_journeys/part-092.csv",
+      "shard": "part-092.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 33,
+      "path": "raw/passenger_journeys/part-093.csv",
+      "shard": "part-093.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 31,
+      "path": "raw/passenger_journeys/part-094.csv",
+      "shard": "part-094.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 61764338,
+      "changed_rows": 24,
+      "path": "raw/passenger_journeys/part-095.csv",
+      "shard": "part-095.csv",
+      "table": "passenger_journeys"
+    },
+    {
+      "bytes": 9269250,
+      "changed_rows": 215,
+      "path": "raw/route_stops/part-000.csv",
+      "shard": "part-000.csv",
+      "table": "route_stops"
+    },
+    {
+      "bytes": 54363135,
+      "changed_rows": 762,
+      "path": "raw/tickets/part-000.csv",
+      "shard": "part-000.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363063,
+      "changed_rows": 776,
+      "path": "raw/tickets/part-001.csv",
+      "shard": "part-001.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363047,
+      "changed_rows": 745,
+      "path": "raw/tickets/part-002.csv",
+      "shard": "part-002.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363035,
+      "changed_rows": 778,
+      "path": "raw/tickets/part-003.csv",
+      "shard": "part-003.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363019,
+      "changed_rows": 769,
+      "path": "raw/tickets/part-004.csv",
+      "shard": "part-004.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363087,
+      "changed_rows": 811,
+      "path": "raw/tickets/part-005.csv",
+      "shard": "part-005.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363111,
+      "changed_rows": 780,
+      "path": "raw/tickets/part-006.csv",
+      "shard": "part-006.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363095,
+      "changed_rows": 866,
+      "path": "raw/tickets/part-007.csv",
+      "shard": "part-007.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363115,
+      "changed_rows": 811,
+      "path": "raw/tickets/part-008.csv",
+      "shard": "part-008.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363135,
+      "changed_rows": 851,
+      "path": "raw/tickets/part-009.csv",
+      "shard": "part-009.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363171,
+      "changed_rows": 891,
+      "path": "raw/tickets/part-010.csv",
+      "shard": "part-010.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363119,
+      "changed_rows": 808,
+      "path": "raw/tickets/part-011.csv",
+      "shard": "part-011.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363115,
+      "changed_rows": 874,
+      "path": "raw/tickets/part-012.csv",
+      "shard": "part-012.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363207,
+      "changed_rows": 778,
+      "path": "raw/tickets/part-013.csv",
+      "shard": "part-013.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363159,
+      "changed_rows": 845,
+      "path": "raw/tickets/part-014.csv",
+      "shard": "part-014.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363287,
+      "changed_rows": 824,
+      "path": "raw/tickets/part-015.csv",
+      "shard": "part-015.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363231,
+      "changed_rows": 874,
+      "path": "raw/tickets/part-016.csv",
+      "shard": "part-016.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363239,
+      "changed_rows": 819,
+      "path": "raw/tickets/part-017.csv",
+      "shard": "part-017.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363179,
+      "changed_rows": 878,
+      "path": "raw/tickets/part-018.csv",
+      "shard": "part-018.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363167,
+      "changed_rows": 859,
+      "path": "raw/tickets/part-019.csv",
+      "shard": "part-019.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363263,
+      "changed_rows": 824,
+      "path": "raw/tickets/part-020.csv",
+      "shard": "part-020.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363355,
+      "changed_rows": 849,
+      "path": "raw/tickets/part-021.csv",
+      "shard": "part-021.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363267,
+      "changed_rows": 848,
+      "path": "raw/tickets/part-022.csv",
+      "shard": "part-022.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363223,
+      "changed_rows": 844,
+      "path": "raw/tickets/part-023.csv",
+      "shard": "part-023.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363319,
+      "changed_rows": 825,
+      "path": "raw/tickets/part-024.csv",
+      "shard": "part-024.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363267,
+      "changed_rows": 868,
+      "path": "raw/tickets/part-025.csv",
+      "shard": "part-025.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363227,
+      "changed_rows": 846,
+      "path": "raw/tickets/part-026.csv",
+      "shard": "part-026.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363263,
+      "changed_rows": 912,
+      "path": "raw/tickets/part-027.csv",
+      "shard": "part-027.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363339,
+      "changed_rows": 889,
+      "path": "raw/tickets/part-028.csv",
+      "shard": "part-028.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363243,
+      "changed_rows": 850,
+      "path": "raw/tickets/part-029.csv",
+      "shard": "part-029.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363275,
+      "changed_rows": 853,
+      "path": "raw/tickets/part-030.csv",
+      "shard": "part-030.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363311,
+      "changed_rows": 916,
+      "path": "raw/tickets/part-031.csv",
+      "shard": "part-031.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363199,
+      "changed_rows": 316,
+      "path": "raw/tickets/part-032.csv",
+      "shard": "part-032.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363191,
+      "changed_rows": 20,
+      "path": "raw/tickets/part-033.csv",
+      "shard": "part-033.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363191,
+      "changed_rows": 30,
+      "path": "raw/tickets/part-034.csv",
+      "shard": "part-034.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363111,
+      "changed_rows": 26,
+      "path": "raw/tickets/part-035.csv",
+      "shard": "part-035.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363223,
+      "changed_rows": 25,
+      "path": "raw/tickets/part-036.csv",
+      "shard": "part-036.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363183,
+      "changed_rows": 26,
+      "path": "raw/tickets/part-037.csv",
+      "shard": "part-037.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363087,
+      "changed_rows": 25,
+      "path": "raw/tickets/part-038.csv",
+      "shard": "part-038.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363163,
+      "changed_rows": 29,
+      "path": "raw/tickets/part-039.csv",
+      "shard": "part-039.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363119,
+      "changed_rows": 32,
+      "path": "raw/tickets/part-040.csv",
+      "shard": "part-040.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363171,
+      "changed_rows": 31,
+      "path": "raw/tickets/part-041.csv",
+      "shard": "part-041.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363147,
+      "changed_rows": 27,
+      "path": "raw/tickets/part-042.csv",
+      "shard": "part-042.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363211,
+      "changed_rows": 38,
+      "path": "raw/tickets/part-043.csv",
+      "shard": "part-043.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363187,
+      "changed_rows": 35,
+      "path": "raw/tickets/part-044.csv",
+      "shard": "part-044.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363135,
+      "changed_rows": 38,
+      "path": "raw/tickets/part-045.csv",
+      "shard": "part-045.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363175,
+      "changed_rows": 23,
+      "path": "raw/tickets/part-046.csv",
+      "shard": "part-046.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363227,
+      "changed_rows": 38,
+      "path": "raw/tickets/part-047.csv",
+      "shard": "part-047.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363251,
+      "changed_rows": 33,
+      "path": "raw/tickets/part-048.csv",
+      "shard": "part-048.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363231,
+      "changed_rows": 31,
+      "path": "raw/tickets/part-049.csv",
+      "shard": "part-049.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363231,
+      "changed_rows": 33,
+      "path": "raw/tickets/part-050.csv",
+      "shard": "part-050.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363315,
+      "changed_rows": 33,
+      "path": "raw/tickets/part-051.csv",
+      "shard": "part-051.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363295,
+      "changed_rows": 26,
+      "path": "raw/tickets/part-052.csv",
+      "shard": "part-052.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363259,
+      "changed_rows": 32,
+      "path": "raw/tickets/part-053.csv",
+      "shard": "part-053.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363171,
+      "changed_rows": 31,
+      "path": "raw/tickets/part-054.csv",
+      "shard": "part-054.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363179,
+      "changed_rows": 26,
+      "path": "raw/tickets/part-055.csv",
+      "shard": "part-055.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363227,
+      "changed_rows": 30,
+      "path": "raw/tickets/part-056.csv",
+      "shard": "part-056.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363131,
+      "changed_rows": 28,
+      "path": "raw/tickets/part-057.csv",
+      "shard": "part-057.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363115,
+      "changed_rows": 27,
+      "path": "raw/tickets/part-058.csv",
+      "shard": "part-058.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363139,
+      "changed_rows": 28,
+      "path": "raw/tickets/part-059.csv",
+      "shard": "part-059.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363051,
+      "changed_rows": 30,
+      "path": "raw/tickets/part-060.csv",
+      "shard": "part-060.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363055,
+      "changed_rows": 27,
+      "path": "raw/tickets/part-061.csv",
+      "shard": "part-061.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363027,
+      "changed_rows": 26,
+      "path": "raw/tickets/part-062.csv",
+      "shard": "part-062.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363095,
+      "changed_rows": 37,
+      "path": "raw/tickets/part-063.csv",
+      "shard": "part-063.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363043,
+      "changed_rows": 24,
+      "path": "raw/tickets/part-064.csv",
+      "shard": "part-064.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363063,
+      "changed_rows": 25,
+      "path": "raw/tickets/part-065.csv",
+      "shard": "part-065.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54362999,
+      "changed_rows": 25,
+      "path": "raw/tickets/part-066.csv",
+      "shard": "part-066.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363039,
+      "changed_rows": 24,
+      "path": "raw/tickets/part-067.csv",
+      "shard": "part-067.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54362995,
+      "changed_rows": 92,
+      "path": "raw/tickets/part-068.csv",
+      "shard": "part-068.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363035,
+      "changed_rows": 29,
+      "path": "raw/tickets/part-069.csv",
+      "shard": "part-069.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363075,
+      "changed_rows": 39,
+      "path": "raw/tickets/part-070.csv",
+      "shard": "part-070.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363059,
+      "changed_rows": 29,
+      "path": "raw/tickets/part-071.csv",
+      "shard": "part-071.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363091,
+      "changed_rows": 43,
+      "path": "raw/tickets/part-072.csv",
+      "shard": "part-072.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363131,
+      "changed_rows": 40,
+      "path": "raw/tickets/part-073.csv",
+      "shard": "part-073.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363215,
+      "changed_rows": 35,
+      "path": "raw/tickets/part-074.csv",
+      "shard": "part-074.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363067,
+      "changed_rows": 35,
+      "path": "raw/tickets/part-075.csv",
+      "shard": "part-075.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363143,
+      "changed_rows": 30,
+      "path": "raw/tickets/part-076.csv",
+      "shard": "part-076.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363127,
+      "changed_rows": 31,
+      "path": "raw/tickets/part-077.csv",
+      "shard": "part-077.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363131,
+      "changed_rows": 31,
+      "path": "raw/tickets/part-078.csv",
+      "shard": "part-078.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363227,
+      "changed_rows": 1000,
+      "path": "raw/tickets/part-079.csv",
+      "shard": "part-079.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363203,
+      "changed_rows": 1774,
+      "path": "raw/tickets/part-080.csv",
+      "shard": "part-080.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363147,
+      "changed_rows": 1574,
+      "path": "raw/tickets/part-081.csv",
+      "shard": "part-081.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363159,
+      "changed_rows": 1571,
+      "path": "raw/tickets/part-082.csv",
+      "shard": "part-082.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363127,
+      "changed_rows": 1572,
+      "path": "raw/tickets/part-083.csv",
+      "shard": "part-083.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363183,
+      "changed_rows": 1504,
+      "path": "raw/tickets/part-084.csv",
+      "shard": "part-084.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363311,
+      "changed_rows": 1628,
+      "path": "raw/tickets/part-085.csv",
+      "shard": "part-085.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363227,
+      "changed_rows": 1708,
+      "path": "raw/tickets/part-086.csv",
+      "shard": "part-086.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363223,
+      "changed_rows": 1552,
+      "path": "raw/tickets/part-087.csv",
+      "shard": "part-087.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363303,
+      "changed_rows": 1687,
+      "path": "raw/tickets/part-088.csv",
+      "shard": "part-088.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363287,
+      "changed_rows": 1625,
+      "path": "raw/tickets/part-089.csv",
+      "shard": "part-089.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363235,
+      "changed_rows": 1738,
+      "path": "raw/tickets/part-090.csv",
+      "shard": "part-090.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363235,
+      "changed_rows": 1705,
+      "path": "raw/tickets/part-091.csv",
+      "shard": "part-091.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363351,
+      "changed_rows": 1350,
+      "path": "raw/tickets/part-092.csv",
+      "shard": "part-092.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363255,
+      "changed_rows": 1774,
+      "path": "raw/tickets/part-093.csv",
+      "shard": "part-093.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363275,
+      "changed_rows": 1804,
+      "path": "raw/tickets/part-094.csv",
+      "shard": "part-094.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 54363315,
+      "changed_rows": 1710,
+      "path": "raw/tickets/part-095.csv",
+      "shard": "part-095.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 26097711,
+      "changed_rows": 825,
+      "path": "raw/tickets/part-096.csv",
+      "shard": "part-096.csv",
+      "table": "tickets"
+    },
+    {
+      "bytes": 39781027,
+      "changed_rows": 8,
+      "path": "raw/trip_vehicle_assignments/part-000.csv",
+      "shard": "part-000.csv",
+      "table": "trip_vehicle_assignments"
+    },
+    {
+      "bytes": 39780893,
+      "changed_rows": 11,
+      "path": "raw/trip_vehicle_assignments/part-001.csv",
+      "shard": "part-001.csv",
+      "table": "trip_vehicle_assignments"
+    },
+    {
+      "bytes": 39780993,
+      "changed_rows": 6,
+      "path": "raw/trip_vehicle_assignments/part-002.csv",
+      "shard": "part-002.csv",
+      "table": "trip_vehicle_assignments"
+    },
+    {
+      "bytes": 39780955,
+      "changed_rows": 10,
+      "path": "raw/trip_vehicle_assignments/part-003.csv",
+      "shard": "part-003.csv",
+      "table": "trip_vehicle_assignments"
+    },
+    {
+      "bytes": 39780923,
+      "changed_rows": 5,
+      "path": "raw/trip_vehicle_assignments/part-004.csv",
+      "shard": "part-004.csv",
+      "table": "trip_vehicle_assignments"
+    },
+    {
+      "bytes": 39780993,
+      "changed_rows": 5,
+      "path": "raw/trip_vehicle_assignments/part-005.csv",
+      "shard": "part-005.csv",
+      "table": "trip_vehicle_assignments"
+    },
+    {
+      "bytes": 39780961,
+      "changed_rows": 11,
+      "path": "raw/trip_vehicle_assignments/part-006.csv",
+      "shard": "part-006.csv",
+      "table": "trip_vehicle_assignments"
+    },
+    {
+      "bytes": 39780893,
+      "changed_rows": 8,
+      "path": "raw/trip_vehicle_assignments/part-007.csv",
+      "shard": "part-007.csv",
+      "table": "trip_vehicle_assignments"
+    },
+    {
+      "bytes": 39780987,
+      "changed_rows": 10,
+      "path": "raw/trip_vehicle_assignments/part-008.csv",
+      "shard": "part-008.csv",
+      "table": "trip_vehicle_assignments"
+    },
+    {
+      "bytes": 32465577,
+      "changed_rows": 8,
+      "path": "raw/trip_vehicle_assignments/part-009.csv",
+      "shard": "part-009.csv",
+      "table": "trip_vehicle_assignments"
+    }
+  ],
+  "changed_rows": 136469,
+  "corrected_dataset_path": "/home/manal/Desktop/UrbanTransit-IQ/raw_data/production-v1.1",
+  "disk_free_after_bytes": 13523300352,
+  "disk_free_before_bytes": 13526695936,
+  "disk_free_remaining_bytes": 13523300352,
+  "elapsed_seconds": 125.5,
+  "hard_linked_files": 193,
+  "incremental_disk_bytes": 3395584,
+  "materialization_finished_utc": "2026-09-26T10:22:59Z",
+  "materialization_started_utc": "2026-09-26T10:20:55Z",
+  "metadata": {
+    "changed_files": 395,
+    "files": 613
+  },
+  "newly_materialized_files": 395,
+  "reserve_bytes": 8589934592,
+  "resumed": true,
+  "total_raw_files": 588
+}

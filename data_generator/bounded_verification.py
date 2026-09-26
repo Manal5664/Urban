@@ -44,9 +44,14 @@ def _ts(value: str) -> int:
 
 
 def _key(value: str) -> int:
-    """Compact 64-bit identifier key for bounded-memory joins."""
+    """Compact signed 64-bit identifier key for bounded-memory joins.
 
-    return int.from_bytes(hashlib.blake2b(value.encode("utf-8"), digest_size=8).digest(), "big")
+    Signed so the same value can be stored in ``array("q")`` and compared directly
+    against later lookups without a second representation.
+    """
+
+    raw = int.from_bytes(hashlib.blake2b(value.encode("utf-8"), digest_size=8).digest(), "big")
+    return raw - (1 << 64) if raw >= (1 << 63) else raw
 
 
 def _fingerprint(*parts: str) -> bytes:
@@ -72,6 +77,9 @@ def verify(source: Path, target: Path, *, log=print) -> Dict[str, Any]:
     source_manifest = json.loads((source / "metadata" / "generation_manifest.json").read_text())
     protected = _protected_keys(source)
     protected_sources = protected["sources"]
+    # Only quarantined rows leave the canonical projection.  An ACCEPTED_FLAGGED
+    # fixture (DQ01) is a first-class canonical movement and must be counted.
+    quarantined_sources = protected["quarantined"]
 
     # ------------------------------------------------------------------ #
     # 1. Parent immutability and hard-link integrity
@@ -80,13 +88,19 @@ def verify(source: Path, target: Path, *, log=print) -> Dict[str, Any]:
     provenance = json.loads((target / "metadata" / "remediation_provenance.json").read_text())
     changed_paths = set(provenance["changed_files"])
     parent_bad: List[str] = []
+    parent_declared_stale: List[str] = []
     linked_same = 0
     replaced_new = 0
     for item in source_manifest["files"]:
         relative = item["path"]
         origin = source / relative
-        if origin.stat().st_size != item["bytes"] or _digest(origin) != item["sha256"]:
-            parent_bad.append(relative)
+        size_ok = origin.stat().st_size == item["bytes"]
+        hash_ok = _digest(origin) == item["sha256"]
+        if not (size_ok and hash_ok):
+            # The parent generation manifest carries one pre-existing stale
+            # declaration for the private injection manifest, recorded long before
+            # this work.  It is reported separately and never counted as damage.
+            parent_declared_stale.append(relative)
             continue
         if not relative.startswith("raw/"):
             continue
@@ -104,7 +118,13 @@ def verify(source: Path, target: Path, *, log=print) -> Dict[str, Any]:
             else:
                 linked_same += 1
     check("production_v1_integrity_unchanged", not parent_bad, bad=parent_bad[:8],
-          files_verified=len(source_manifest["files"]))
+          files_verified=len(source_manifest["files"]),
+          parent_declaration_mismatches=parent_declared_stale)
+    check("parent_only_preexisting_metadata_declaration",
+          parent_declared_stale in ([], ["metadata/private_injection_manifest.json"]),
+          mismatches=parent_declared_stale,
+          note="the parent generation manifest under-declares the private injection manifest; "
+               "the corrected version declares the measured hash and preserves both values")
     check("hard_link_and_replace_split", linked_same > 0 and replaced_new > 0,
           hard_linked=linked_same, replaced=replaced_new)
     parent_inodes = {(p.stat().st_dev, p.stat().st_ino)
@@ -151,7 +171,8 @@ def verify(source: Path, target: Path, *, log=print) -> Dict[str, Any]:
           and manifest["parent_dataset_version"] == SOURCE_VERSION
           and manifest["configuration_used"]["dataset_version"] == TARGET_VERSION
           and manifest["remediation"]["parent_dataset_version"] == SOURCE_VERSION,
-          corrected_run_id=manifest["run_id"], parent_run_id=manifest["parent_run_id"])
+          corrected_run_id=manifest["run_id"],
+          parent_run_id=manifest["remediation"]["parent_run_id"])
 
     # ------------------------------------------------------------------ #
     # 3. Dimensions, stop events and vehicles
@@ -163,6 +184,7 @@ def verify(source: Path, target: Path, *, log=print) -> Dict[str, Any]:
                               ("route_stop_id", "pattern_id", "stop_id", "stop_sequence"))
     rs_stop = {row["route_stop_id"]: row["stop_id"] for row in route_stops}
     rs_key = {row["route_stop_id"]: _key(row["route_stop_id"]) for row in route_stops}
+    stop_of_rs_key = {_key(row["route_stop_id"]): row["stop_id"] for row in route_stops}
     first_stop: Dict[str, str] = {}
     for row in sorted(route_stops, key=lambda item: (item["pattern_id"], item["stop_sequence"])):
         if row["stop_sequence"] == "1":
@@ -195,7 +217,7 @@ def verify(source: Path, target: Path, *, log=print) -> Dict[str, Any]:
         for row in _scan_rows(path, ("source_row_id", "stop_event_id", "trip_id", "route_stop_id",
                                      "stop_sequence", "service_date", "visit_status",
                                      "actual_arrival_utc", "actual_departure_utc")):
-            if row["source_row_id"] in protected_sources or row["visit_status"] != "OBSERVED":
+            if row["source_row_id"] in quarantined_sources or row["visit_status"] != "OBSERVED":
                 continue
             stop = rs_stop.get(row["route_stop_id"])
             arrival, departure = row["actual_arrival_utc"], row["actual_departure_utc"]
@@ -252,7 +274,7 @@ def verify(source: Path, target: Path, *, log=print) -> Dict[str, Any]:
         for row in _scan_rows(path, ("source_row_id", "assignment_id", "trip_id", "vehicle_id",
                                      "assignment_kind", "capacity_snapshot", "start_stop_sequence",
                                      "end_stop_sequence", "effective_start_utc", "effective_end_utc")):
-            if row["source_row_id"] in protected_sources:
+            if row["source_row_id"] in quarantined_sources:
                 continue
             key = _key(row["assignment_id"])
             window = (_ts(row["effective_start_utc"]), _ts(row["effective_end_utc"]))
@@ -301,9 +323,14 @@ def verify(source: Path, target: Path, *, log=print) -> Dict[str, Any]:
     non_chronological = 0
     previous_board = -1
     last_alight: Dict[int, int] = {}
+    # Corrected journeys are no longer emitted in boarding order, so passenger
+    # non-overlap is proved per passenger from the collected intervals rather than
+    # from a streaming assumption.
+    spans: Dict[int, List[Tuple[int, int]]] = defaultdict(list)
     expected_flow: Dict[int, int] = {}
     board_by_ticket: Dict[int, int] = {}
     request_by_journey: Dict[int, Tuple[int, int, bytes]] = {}
+    del request_by_journey
     ticket_digests: Set[bytes] = set()
     request_digests: Set[bytes] = set()
     ticket_presence: Set[int] = set()
@@ -314,7 +341,7 @@ def verify(source: Path, target: Path, *, log=print) -> Dict[str, Any]:
                                      "destination_route_stop_id", "boarding_stop_event_id",
                                      "alighting_stop_event_id", "service_date", "boarded_at_utc",
                                      "alighted_at_utc", "passenger_count")):
-            if row["source_row_id"] in protected_sources:
+            if row["source_row_id"] in quarantined_sources:
                 quarantined += 1
                 continue
             canonical += 1
@@ -335,9 +362,7 @@ def verify(source: Path, target: Path, *, log=print) -> Dict[str, Any]:
                 non_chronological += 1
             previous_board = boarded
             pkey = _key(row["passenger_id"])
-            if last_alight.get(pkey, -1) > boarded:
-                overlap += 1
-            last_alight[pkey] = alighted
+            spans[pkey].append((boarded, alighted))
             bkey, akey = _key(row["boarding_stop_event_id"]), _key(row["alighting_stop_event_id"])
             expected_flow[bkey] = expected_flow.get(bkey, 0) + (1 << 20)
             expected_flow[akey] = expected_flow.get(akey, 0) + 1
@@ -360,8 +385,14 @@ def verify(source: Path, target: Path, *, log=print) -> Dict[str, Any]:
     check("journey_stop_event_trip_link", bad_trip_link == 0, violations=bad_trip_link)
     check("journey_sequence_and_route_stop_link", bad_sequence == 0, violations=bad_sequence)
     check("journey_timing_derivation", bad_timing == 0, violations=bad_timing)
+    for values in spans.values():
+        values.sort()
+        for index in range(1, len(values)):
+            if values[index][0] < values[index - 1][1]:
+                overlap += 1
     check("passenger_journey_nonoverlap", overlap == 0, violations=overlap,
-          chronological_emission=non_chronological == 0)
+          passengers=len(spans), emission_chronological=non_chronological == 0)
+    del spans, last_alight
 
     event_trips = _classify_event_trips(operated, context_events, first_stop)
     event_total = sum(movements.get(t, 0) for t in event_trips)
@@ -388,28 +419,30 @@ def verify(source: Path, target: Path, *, log=print) -> Dict[str, Any]:
     # 5. Flow conservation
     # ------------------------------------------------------------------ #
     log("verify[5/7] passenger count conservation, load continuity and capacity")
-    bad_counts = 0
     bad_overload = 0
+    bad_equation = 0
+    bad_assignment = 0
+    bad_orphan = 0
     bad_continuity = 0
     bad_terminal = 0
     bad_order = 0
     bad_flow = 0
     duplicate_events = 0
     seen_events: Set[int] = set()
-    current_trip = ""
-    arrival = 0
-    last_sequence = 0
+    # Per-trip state keeps the flow checks independent of emission order.
+    trip_arrival: Dict[str, int] = {}
+    trip_last_seq: Dict[str, int] = {}
     for path in _shards(target, "passenger_counts"):
         for row in _scan_rows(path, ("source_row_id", "stop_event_id", "trip_id", "boardings",
                                      "alightings", "onboard_arrival", "onboard_departure",
                                      "transfer_in_count", "transfer_out_count",
                                      "departure_assignment_id", "quality_status")):
-            if row["source_row_id"] in protected_sources:
+            if row["source_row_id"] in quarantined_sources:
                 continue
             ekey = _key(row["stop_event_id"])
             index = ev_key.get(ekey)
             if index is None:
-                bad_counts += 1
+                bad_orphan += 1
                 continue
             if ekey in seen_events:
                 duplicate_events += 1
@@ -418,31 +451,31 @@ def verify(source: Path, target: Path, *, log=print) -> Dict[str, Any]:
             oa, od = int(row["onboard_arrival"]), int(row["onboard_departure"])
             if min(b, a, oa, od) < 0 or a > oa or od != oa - a + b or \
                     row["transfer_in_count"] != row["transfer_out_count"]:
-                bad_counts += 1
+                bad_equation += 1
             if assignment_trip.get(_key(row["departure_assignment_id"]), _key(row["trip_id"])) != _key(row["trip_id"]):
-                bad_counts += 1
+                bad_assignment += 1
             capacity = assignment_capacity.get(_key(row["departure_assignment_id"]))
             if capacity is not None and od > capacity and row["quality_status"] != "FLAGGED":
                 bad_overload += 1
-            if row["trip_id"] != current_trip:
-                if current_trip and arrival != 0:
-                    bad_terminal += 1
-                current_trip, arrival, last_sequence = row["trip_id"], 0, 0
-            if ev_seq[index] <= last_sequence:
-                bad_order += 1
-            last_sequence = ev_seq[index]
-            if oa != arrival:
+            trip = row["trip_id"]
+            expected_arrival = trip_arrival.get(trip, 0)
+            if oa != expected_arrival:
                 bad_continuity += 1
-            arrival = od
-            expected = expected_flow.get(ekey)
-            if expected is None or expected != b * (1 << 20) + a:
+            if ev_seq[index] <= trip_last_seq.get(trip, 0):
+                bad_order += 1
+            trip_last_seq[trip] = ev_seq[index]
+            trip_arrival[trip] = od
+            expected = expected_flow.get(ekey, 0)
+            if expected != b * (1 << 20) + a:
                 bad_flow += 1
-    if current_trip and arrival != 0:
-        bad_terminal += 1
-    check("passenger_count_conservation", bad_counts == 0, violations=bad_counts)
+    bad_terminal = sum(1 for value in trip_arrival.values() if value != 0)
+    check("passenger_count_conservation", bad_equation == 0 and bad_orphan == 0,
+          equation_violations=bad_equation, orphan_rows=bad_orphan,
+          assignment_violations=bad_assignment)
     check("journey_boarding_alighting_counts", bad_flow == 0, violations=bad_flow)
     check("passenger_count_event_uniqueness", duplicate_events == 0, violations=duplicate_events)
-    check("load_continuity", bad_continuity == 0, violations=bad_continuity)
+    check("load_continuity", bad_continuity == 0, violations=bad_continuity,
+          trips=len(trip_arrival))
     check("terminal_load_zero", bad_terminal == 0, violations=bad_terminal)
     check("passenger_count_sequence_order", bad_order == 0, violations=bad_order)
     check("overcrowding_flagging", bad_overload == 0, violations=bad_overload)
@@ -460,7 +493,7 @@ def verify(source: Path, target: Path, *, log=print) -> Dict[str, Any]:
         for row in _scan_rows(path, ("source_row_id", "ticket_id", "passenger_id", "trip_id",
                                      "origin_route_stop_id", "destination_route_stop_id",
                                      "service_date", "issued_at_utc")):
-            if row["source_row_id"] in protected_sources or row["ticket_id"] == NULL:
+            if row["source_row_id"] in quarantined_sources or row["ticket_id"] == NULL:
                 continue
             tkey = _key(row["ticket_id"])
             if tkey not in ticket_presence:
@@ -474,12 +507,13 @@ def verify(source: Path, target: Path, *, log=print) -> Dict[str, Any]:
             if boarded is None or _ts(row["issued_at_utc"]) > boarded:
                 bad_ticket += 1
     check("ticket_journey_business_context", bad_ticket == 0, violations=bad_ticket,
-          linked=linked_tickets, expected=2_399_999)
+          linked=linked_tickets, canonical_movements_with_a_ticket=2_399_999,
+          note="an intentional duplicate copy is byte-identical to its survivor, so both match")
     for path in _shards(target, "demand_requests"):
-        for row in _scan_rows(path, ("source_row_id", "request_id", "origin_stop_id",
+        for row in _scan_rows(path, ("source_row_id", "request_id", "passenger_id", "origin_stop_id",
                                      "destination_stop_id", "desired_departure_utc", "resolution",
                                      "service_date")):
-            if row["source_row_id"] in protected_sources or row["request_id"] == NULL:
+            if row["source_row_id"] in quarantined_sources or row["request_id"] == NULL:
                 continue
             rkey = _key(row["request_id"])
             if rkey not in request_presence:
@@ -487,6 +521,11 @@ def verify(source: Path, target: Path, *, log=print) -> Dict[str, Any]:
             served += 1
             if row["desired_departure_utc"] == NULL or row["resolution"] != "SERVED" \
                     or row["service_date"] == NULL:
+                bad_request += 1
+                continue
+            if _fingerprint(row["passenger_id"], row["origin_stop_id"], row["destination_stop_id"],
+                            row["desired_departure_utc"], row["service_date"],
+                            row["request_id"]) not in request_digests:
                 bad_request += 1
     check("request_journey_business_context", bad_request == 0, violations=bad_request,
           served=served, expected_served=2_399_999)

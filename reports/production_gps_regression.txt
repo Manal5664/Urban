@@ -1,6 +1,0 @@
-test_all_gps_points_belong_to_active_vehicle_phase (test_gps_replacement_phases.GpsReplacementTests) ... ok
-
-----------------------------------------------------------------------
-Ran 1 test in 0.135s
-
-OK

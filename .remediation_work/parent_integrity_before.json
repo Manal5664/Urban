@@ -1,0 +1,13 @@
+{
+  "source": "/home/manal/Desktop/UrbanTransit-IQ/raw_data/production-v1",
+  "files_checked": 609,
+  "mismatches": [
+    {
+      "path": "metadata/private_injection_manifest.json",
+      "declared_bytes": 10590,
+      "measured_bytes": 11246,
+      "declared_sha256": "d7fd42172bc382ce20bf71f5086c7b0fbedb96786ac335cab965f5b64412a5d4",
+      "measured_sha256": null
+    }
+  ]
+}

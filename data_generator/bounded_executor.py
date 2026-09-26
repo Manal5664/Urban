@@ -19,6 +19,7 @@ import hashlib
 import json
 import os
 import shutil
+import signal
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
@@ -103,27 +104,75 @@ def correction_configuration(plan: Dict[str, Any]) -> Dict[str, Any]:
 # Materialization
 # --------------------------------------------------------------------------- #
 
-def materialize(source: Path, target: Path, plan: Dict[str, Any], *, log=print) -> Dict[str, Any]:
+INCOMPLETE_MARKER = "MATERIALIZATION_INCOMPLETE"
+OWNERSHIP_MARKER = "MATERIALIZATION_OWNER"
+
+
+class StorageAbort(RuntimeError):
+    """The measured closure would breach the declared free-space reserve."""
+
+
+def materialize(source: Path, target: Path, plan: Dict[str, Any], *, log=print,
+                journal: Optional[Path] = None) -> Dict[str, Any]:
     source = source.resolve()
     target = target.resolve()
     started = _now()
-    if target.exists():
-        raise FileExistsError(f"{target} already exists; refusing to overlay a materialized version")
+    target_existed = target.exists()
+    resume = target_existed
+    if target_existed and journal is None:
+        raise FileExistsError(
+            f"{target} already exists and no progress journal was supplied; refusing to overlay "
+            "a materialized or partially materialized version")
     if source.stat().st_dev != target.parent.stat().st_dev:
-        raise OSError("bounded remediation requires one filesystem for hard links")
+        raise OSError("hard-link remediation requires one filesystem for hard links")
     if plan["source_dataset_version"] != SOURCE_VERSION or plan["target_dataset_version"] != TARGET_VERSION:
         raise ValueError("plan does not describe this version pair")
 
     before = _free(source)
-    if before - plan["closure_bytes"] < RESERVE_BYTES:
-        raise RuntimeError("storage inequality failed before materialization started")
 
-    log(f"materialize: linking {source.name} -> {target.name} (free {before / 2**30:.2f} GiB)")
-    target.mkdir(parents=True)
-    linked = 0
-    replaced: List[Dict[str, Any]] = []
-    try:
-        for path in sorted(p for p in (source / "raw").rglob("*") if p.is_file()):
+    def _stop(signum, _frame):
+        # An external signal must never destroy completed shards: the journal makes
+        # the run resumable, so leave the staged tree exactly as it stands.
+        log(f"materialize: received signal {signum}; staged tree kept for resume")
+        os._exit(143)
+
+    for name in (signal.SIGTERM, signal.SIGINT, signal.SIGHUP):
+        try:
+            signal.signal(name, _stop)
+        except (ValueError, OSError):
+            pass
+
+    done: Set[str] = set()
+    if journal is not None and journal.exists():
+        # The progress record is append-only and is always re-validated against the
+        # tree: a shard counts as done only when its staged file exists and no longer
+        # shares the parent inode, which is exactly the state an atomic rename leaves
+        # behind.  Losing the tree therefore costs nothing but the shards it held.
+        recorded = {line.strip() for line in journal.read_text().splitlines() if line.strip()}
+        for entry in plan["closure"]:
+            if entry["path"] not in recorded:
+                continue
+            mirror = target / entry["path"]
+            origin = source / entry["path"]
+            if mirror.exists() and origin.stat().st_ino != mirror.stat().st_ino:
+                done.add(entry["path"])
+    if target.exists():
+        for leftover in target.rglob(".*remediation-tmp"):
+            leftover.unlink(missing_ok=True)
+            log(f"materialize: discarded stale staging file {leftover.relative_to(target)}")
+        for required in ("metadata", "validation", ".uti_dataset_output"):
+            if not (target / required).exists():
+                raise RuntimeError(f"staged target is missing {required}; refusing to guess")
+        linked = sum(1 for path in (target / "raw").rglob("*") if path.is_file())
+        log(f"materialize: resuming with {len(done)}/{len(plan['closure'])} shards already replaced")
+    else:
+        if journal is not None:
+            journal.parent.mkdir(parents=True, exist_ok=True)
+            journal.touch(exist_ok=True)
+        log(f"materialize: linking {source.name} -> {target.name} (free {before / 2**30:.2f} GiB)")
+        target.mkdir(parents=True)
+        linked = 0
+        for path in sorted(q for q in (source / "raw").rglob("*") if q.is_file()):
             destination = target / "raw" / path.relative_to(source / "raw")
             destination.parent.mkdir(parents=True, exist_ok=True)
             os.link(path, destination)
@@ -131,11 +180,32 @@ def materialize(source: Path, target: Path, plan: Dict[str, Any], *, log=print) 
         shutil.copytree(source / "metadata", target / "metadata")
         shutil.copy2(source / ".uti_dataset_output", target / ".uti_dataset_output")
         (target / "validation").mkdir(exist_ok=True)
+        (target / INCOMPLETE_MARKER).write_text(
+            "This tree is a partially materialized corrected version. The corrected generation "
+            "manifest is published only when materialization completes.\n", encoding="utf-8")
+        # Ownership token: a concurrent executor must never be able to remove this
+        # staged tree, so abort cleanup is only permitted for the tree's creator.
+        (target / OWNERSHIP_MARKER).write_text(f"{os.getpid()} {source}\n", encoding="utf-8")
+    created_here = not target_existed
 
-        remaining = plan["closure_bytes"]
+    replaced: List[Dict[str, Any]] = []
+    remaining = sum(entry["bytes"] for entry in plan["closure"] if entry["path"] not in done)
+    already = plan["closure_bytes"] - remaining
+    if before - remaining < RESERVE_BYTES:
+        raise StorageAbort(
+            f"storage inequality failed: free={before} remaining_closure={remaining} "
+            f"already_materialized={already} reserve={RESERVE_BYTES}")
+    log(f"materialize: storage inequality satisfied: free={before / 2**30:.2f} GiB "
+        f"remaining={remaining / 2**30:.2f} GiB already_written={already / 2**30:.2f} GiB "
+        f"reserve={RESERVE_BYTES / 2**30:.2f} GiB")
+    try:
         for entry in plan["closure"]:
+            if entry["path"] in done:
+                replaced.append({"path": entry["path"], "table": entry["table"], "shard": entry["shard"],
+                                 "changed_rows": entry["changed_rows"], "bytes": entry["bytes"]})
+                continue
             if _free(source) - remaining < RESERVE_BYTES:
-                raise RuntimeError(
+                raise StorageAbort(
                     f"aborting before {entry['path']}: free space would fall below the declared reserve")
             table_shard = source / entry["path"]
             target_shard = target / entry["path"]
@@ -144,23 +214,38 @@ def materialize(source: Path, target: Path, plan: Dict[str, Any], *, log=print) 
             remaining -= entry["bytes"]
             replaced.append({"path": entry["path"], "table": entry["table"], "shard": entry["shard"],
                              "changed_rows": rows, "bytes": entry["bytes"]})
+            if journal is not None:
+                with journal.open("a", encoding="utf-8") as handle:
+                    handle.write(entry["path"] + "\n")
+                    handle.flush()
+                    os.fsync(handle.fileno())
             log(f"materialize: replaced {entry['path']} ({rows} rows, "
                 f"{entry['bytes'] / 2**30:.3f} GiB) free={_free(source) / 2**30:.2f} GiB")
         metadata = _publish_metadata(source, target, plan, replaced, log)
-    except BaseException:
-        # Every entry under the target is either a hard link or a newly created
-        # file, so removing the tree releases only new storage and never touches
-        # the parent.  A half-materialized version is removed so it can never be
-        # mistaken for a corrected dataset.
+        (target / INCOMPLETE_MARKER).unlink(missing_ok=True)
+        (target / OWNERSHIP_MARKER).unlink(missing_ok=True)
+    except StorageAbort as error:
+        # A storage-inequality abort is a hard stop. The staged tree is removed only
+        # when this invocation created it, so a concurrent executor's work is never
+        # destroyed by another process's abort.
         for leftover in target.rglob(".*remediation-tmp"):
             leftover.unlink(missing_ok=True)
-        shutil.rmtree(target, ignore_errors=True)
-        log("materialize: aborted and removed the partially created target tree")
+        if not created_here:
+            shutil.rmtree(target, ignore_errors=True)
+            log("materialize: aborted and removed the partially created target tree")
+        else:
+            log("materialize: aborted; staged tree kept because it was not created by this run")
+        raise error
+    except BaseException:
+        for leftover in target.rglob(".*remediation-tmp"):
+            leftover.unlink(missing_ok=True)
+        log("materialize: failed; staged tree kept for resume")
         raise
 
     after = _free(source)
     return {
         "corrected_dataset_path": str(target),
+        "resumed": resume,
         "hard_linked_files": linked - len(replaced),
         "newly_materialized_files": len(replaced),
         "total_raw_files": linked,
@@ -409,7 +494,7 @@ def _change_ledger(plan: Dict[str, Any]) -> Dict[str, Any]:
     for table, rows in plan["updates"].items():
         columns: Counter = Counter()
         for changes in rows.values():
-            columns.update(changes)
+            columns.update(changes.keys())
         tables[table] = {
             "changed_rows": len(rows),
             "changed_columns": dict(sorted(columns.items())),

@@ -1,0 +1,42 @@
+materialize: discarded stale staging file raw/demand_requests/.part-021.csv.remediation-tmp
+materialize: resuming with 21/395 shards already replaced
+materialize: storage inequality satisfied: free=31.22 GiB remaining=18.64 GiB already_written=0.99 GiB reserve=8.00 GiB
+materialize: failed; staged tree kept for resume
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/manal/Desktop/UrbanTransit-IQ/data_generator/remediate_bounded.py", line 107, in <module>
+    raise SystemExit(main())
+  File "/home/manal/Desktop/UrbanTransit-IQ/data_generator/remediate_bounded.py", line 80, in main
+    result = materialize(args.source, args.target, plan, log=log, journal=args.journal)
+  File "/home/manal/Desktop/UrbanTransit-IQ/data_generator/bounded_executor.py", line 196, in materialize
+    rows = write_shard(table_shard, target_shard, entry["table"],
+  File "/home/manal/Desktop/UrbanTransit-IQ/data_generator/bounded_remediation.py", line 220, in write_shard
+    os.replace(temporary, target_shard)
+FileNotFoundError: [Errno 2] No such file or directory: '/home/manal/Desktop/UrbanTransit-IQ/raw_data/production-v1.1/raw/demand_requests/.part-021.csv.remediation-tmp' -> '/home/manal/Desktop/UrbanTransit-IQ/raw_data/production-v1.1/raw/demand_requests/part-021.csv'
+Command exited with non-zero status 1
+	Command being timed: "python3 -u -m data_generator.remediate_bounded materialize /home/manal/Desktop/UrbanTransit-IQ/raw_data/production-v1 /home/manal/Desktop/UrbanTransit-IQ/raw_data/production-v1.1 --plan /home/manal/UrbanTransit-IQ/.remediation_work/plan_v11.json --journal /home/manal/UrbanTransit-IQ/.remediation_work/materialize_journal.txt --report /home/manal/UrbanTransit-IQ/.remediation_work/materialization_report.json"
+	User time (seconds): 2.99
+	System time (seconds): 0.35
+	Percent of CPU this job got: 98%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:03.41
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 257108
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 83507
+	Voluntary context switches: 10
+	Involuntary context switches: 451
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 99112
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 1

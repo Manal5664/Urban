@@ -301,6 +301,8 @@ def _protected_keys(source: Path) -> Dict[str, Set[str]]:
 
     manifest = json.loads((source / "metadata" / "private_injection_manifest.json").read_text())
     sources = {item["source_row_id"] for item in manifest["injections"]}
+    quarantined = {item["source_row_id"] for item in manifest["injections"]
+                   if item["expected_disposition"] != "ACCEPTED_FLAGGED"}
     business: Set[str] = set()
     tickets: Set[str] = set()
     for item in manifest["injections"]:
@@ -325,6 +327,7 @@ def _protected_keys(source: Path) -> Dict[str, Set[str]]:
     revisions = (source / "metadata" / "value_revisions.csv").read_text().splitlines()
     for line in revisions[1:]:
         sources.add(line.split(",")[-1])
+        quarantined.add(line.split(",")[-1])
         business.add(line.split(",")[2])
     duplicates = list(csv.DictReader(
         (source / "metadata" / "production_ticket_duplicates.csv").open(newline="")))
@@ -334,8 +337,9 @@ def _protected_keys(source: Path) -> Dict[str, Set[str]]:
         duplicate_rows.add(row["source_row_id"])
         duplicate_rows.add(row["survivor_source_row_id"])
         duplicate_pairs.append((row["source_row_id"], row["survivor_source_row_id"]))
-    return {"sources": sources, "business": business, "tickets": tickets,
-            "duplicate_rows": duplicate_rows, "duplicate_pairs": duplicate_pairs}
+    return {"sources": sources, "quarantined": quarantined, "business": business,
+            "tickets": tickets, "duplicate_rows": duplicate_rows,
+            "duplicate_pairs": duplicate_pairs}
 
 
 # --------------------------------------------------------------------------- #
@@ -900,7 +904,23 @@ def _plan_stop_overlay(stops, positions, position_stats, position_load, observed
             continue
         eligible.append((position_load.get(route_stop_id, 0), route_stop_id))
     eligible.sort()
-    log(f"plan[5/9] {len(eligible)} observed positions may be re-pointed without losing coverage")
+    # A stop keeps its coverage only while one of its observed positions is left
+    # untouched.  Reserving the highest-traffic observed position of every covered
+    # stop guarantees that by construction, independently of how many positions a
+    # stop happens to have.
+    reserve: Dict[str, str] = {}
+    for route_stop_id, position in positions.items():
+        stats = position_stats.get(route_stop_id)
+        if not stats or not stats["observed"]:
+            continue
+        stop = position["stop_id"]
+        key = (position_load.get(route_stop_id, 0), route_stop_id)
+        if stop not in reserve or key > reserve[stop][0]:
+            reserve[stop] = (key, route_stop_id)
+    reserved_ids = {value[1] for value in reserve.values()}
+    repointed_per_stop: Counter = Counter()
+    log(f"plan[5/9] {len(eligible)} observed positions may be re-pointed without losing coverage; "
+        f"{len(reserved_ids)} positions reserved to preserve existing coverage")
 
     used: Set[str] = set()
     mappings: List[Dict[str, Any]] = []
@@ -908,6 +928,9 @@ def _plan_stop_overlay(stops, positions, position_stats, position_load, observed
     for pressure, route_stop_id in eligible:
         if len(mappings) >= STOP_REMAPPINGS:
             break
+        if route_stop_id in reserved_ids:
+            continue
+        old_stop = positions[route_stop_id]["stop_id"]
         opening = position_stats[route_stop_id]["min_date"]
         chosen = None
         if len(used) < len(later):
@@ -923,6 +946,7 @@ def _plan_stop_overlay(stops, positions, position_stats, position_load, observed
         if chosen is None:
             continue
         used.add(chosen["stop_id"])
+        repointed_per_stop[old_stop] += 1
         if chosen["opened_on"] > "2025-01-01":
             later_used += 1
         old = positions[route_stop_id]
@@ -942,10 +966,26 @@ def _plan_stop_overlay(stops, positions, position_stats, position_load, observed
         })
     if len(mappings) < REQUIRED_USED_STOPS - len(used_stops_expected(positions, position_stats)):
         raise ValueError("stop overlay did not reach the required observed stop coverage")
+    # Prove the arithmetic instead of assuming it: every currently covered stop
+    # must survive, and every re-pointed position must contribute one new stop.
+    repointed_positions = {item["route_stop_id"] for item in mappings}
+    surviving = Counter(positions[rid]["stop_id"] for rid, s in position_stats.items()
+                        if s["observed"] and rid not in repointed_positions)
+    added = {item["new_stop_id"] for item in mappings}
+    projected = len(surviving) + len(added - set(surviving))
+    covered_before = len(used_stops_expected(positions, position_stats))
+    if projected != covered_before + len(mappings):
+        lost = {stop: count for stop, count in observed_per_stop.items()
+                if count > 0 and stop not in surviving}
+        raise ValueError(
+            f"stop re-pointing arithmetic: covered_before={covered_before} mappings={len(mappings)} "
+            f"distinct_new_stops={len(added)} surviving={len(surviving)} projected={projected} "
+            f"expected={covered_before + len(mappings)} stops_losing_coverage={sorted(lost)[:6]}")
     if later_used < 50:
         raise ValueError(f"stop overlay admitted only {later_used} later-opening stops")
     mappings.sort(key=lambda item: item["route_stop_id"])
-    log(f"plan[5/9] remapped {len(mappings)} positions ({later_used} later-opening stops)")
+    log(f"plan[5/9] remapped {len(mappings)} positions ({later_used} later-opening stops); "
+        f"projected covered stops={len(used_stops_expected(positions, position_stats)) + len(mappings)}")
     return mappings
 
 

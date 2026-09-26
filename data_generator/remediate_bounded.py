@@ -49,6 +49,8 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     run_parser.add_argument("source", type=Path)
     run_parser.add_argument("target", type=Path)
     run_parser.add_argument("--plan", type=Path)
+    run_parser.add_argument("--journal", type=Path,
+                            help="append-only shard journal enabling crash-safe resume")
     run_parser.add_argument("--report", type=Path)
 
     check_parser = sub.add_parser("verify")
@@ -74,10 +76,8 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
 
     if args.command == "materialize":
         started = time.time()
-        if args.target.exists():
-            raise SystemExit(f"refusing to overlay an existing target: {args.target}")
         plan = _load_plan(args.plan, args.source)
-        result = materialize(args.source, args.target, plan, log=log)
+        result = materialize(args.source, args.target, plan, log=log, journal=args.journal)
         result["elapsed_seconds"] = round(time.time() - started, 1)
         result["reserve_bytes"] = RESERVE_BYTES
         runtime = {
