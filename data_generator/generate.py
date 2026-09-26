@@ -345,6 +345,30 @@ def _write_control_metadata(manager: OutputManager, ctx: GenerationContext, case
         "rules": [{"rule_id": rule_id, "scenario": name, "description": description, "implementation": "controlled raw fixture + validator"} for rule_id, name, description in QUALITY_FAMILIES],
         "note": "Expected audit rows are generator validation fixtures, not completed independent cleaning pipeline results.",
     })
+    # DQ01 is a physical missing-ticket journey, not a fabricated replacement
+    # ticket. Recover its existing source reference before writing the oracle
+    # manifest so the aggregate family check remains complete.
+    if not any(item.get("rule_id") == "DQ01" for item in quality.manifest):
+        missing_ticket = {
+            "journey_id": ctx.fixture_refs.get("missing_ticket_journey_id"),
+        } if ctx.fixture_refs.get("missing_ticket_source") else None
+        if missing_ticket:
+            source = ctx.fixture_refs["missing_ticket_source"]
+            if source:
+                ctx.add_injection(
+                    injection_id="INJ-DQ01-MISSING-TICKET",
+                    scenario_id="C01",
+                    table="passenger_journeys",
+                    source_row_id=source,
+                    business_key=missing_ticket["journey_id"],
+                    rule_id="DQ01",
+                    field_path="ticket_id",
+                    original_value=None,
+                    mutation="physical ticket omitted while journey is retained",
+                    disposition="ACCEPTED_FLAGGED",
+                    usable_for=["movement", "od", "timing", "boarding"],
+                )
+                quality.manifest.append(ctx.injections[-1])
     manager.write_json("metadata/private_injection_manifest.json", {
         "manifest_version": "1.0",
         "is_test_oracle": True,

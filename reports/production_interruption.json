@@ -1,0 +1,319 @@
+{
+  "checks": [
+    {
+      "name": "complete_csv_record_shapes",
+      "passed": true
+    },
+    {
+      "name": "gps_assignment_time_integrity",
+      "passed": false
+    }
+  ],
+  "configuration_hash": "4174afcb1b4d276cf64bf1a9b3d436ab5ef6b92a2f7822a24dfc1f768da21d23",
+  "corrected_source_not_applied_to_partial_files": true,
+  "csv_errors": [],
+  "dataset_bytes": 858068095,
+  "examples": [
+    {
+      "assignment_id": "ASG0eb4b0f05f0687bc571a7155f3abe1f78036e3b753f9c8eb2d8044758b904fde",
+      "effective_end_utc": "2025-01-01T03:57:09.000000Z",
+      "effective_start_utc": "2025-01-01T01:47:10.000000Z",
+      "gps_event_id": "GPSa31f901a375f7b40a731c010f6f9ddad69da54e7f3363b3f609127112d1b9193",
+      "observed_at_utc": "2025-01-01T01:24:19.000000Z",
+      "start_stop_sequence": "5",
+      "stop_event_id": "TSE366cef9f527268b9ad2d9b64b70c752e0235b6182bc25ca69bdbeaca388160f3",
+      "trip_id": "TR8d375037e176fcdb5e3f8aa9e8aee3601a98ac3e8f6e66ac35e0beb39c1e5eea"
+    },
+    {
+      "assignment_id": "ASG957ffcc3dae351495cf35cfe9339cba62eaaa75e919b0c62e7a0d459cb5d10ab",
+      "effective_end_utc": "2025-01-01T03:57:09.000000Z",
+      "effective_start_utc": "2025-01-01T01:47:10.000000Z",
+      "gps_event_id": "GPS89223406b32cb70d031184422f0ea37c8c36c0d39e6109104146b5561e71fdb4",
+      "observed_at_utc": "2025-01-01T01:24:19.000000Z",
+      "start_stop_sequence": "5",
+      "stop_event_id": "TSE78955e383110eb84ce8b1a3dcf2311fcaab8fd81ea9febec9e96c3cfe4b83234",
+      "trip_id": "TR72cf681f4589178758bd3aa69eb99c1027aa03c71e07fadb0da5808a458f0793"
+    },
+    {
+      "assignment_id": "ASG6607148190e07ee1ff6314fa14a96d8c33b7c8cecaf9eed64362527b859ec504",
+      "effective_end_utc": "2025-01-01T05:04:55.000000Z",
+      "effective_start_utc": "2025-01-01T02:32:10.000000Z",
+      "gps_event_id": "GPS08d766a1aba405724d677c1c4c1d4fc69b200a42dbaf637259b1f720f66673f4",
+      "observed_at_utc": "2025-01-01T02:04:40.000000Z",
+      "start_stop_sequence": "5",
+      "stop_event_id": "TSE3974b9937505cf9e3b30c62c5b598b45251cbfca84627bf755f22773ded69995",
+      "trip_id": "TR77d7f4b3d3e4d0dd5dc3343e028be2e052e1e8a94e39e3575b04ed3bb89afa70"
+    }
+  ],
+  "exit_code": 130,
+  "failed_count": 1,
+  "file_count": 38,
+  "generation_command": "/usr/bin/time -v -o reports/production_generation_time.txt python3 -m data_generator.generate --profile production --output raw_data/production-v1 --allow-production --seed 20260924 --timestamp 2026-09-25T00:00:00Z > reports/production_generation.log 2>&1",
+  "generator_checkpoint": "69d4847f780fae781173d34bb5421994e0a3e7d5",
+  "gps_assignment_time_violations": 120,
+  "last_logged_departures": 2975,
+  "last_progress_local": "2026-09-25T13:32:38.418+05:00",
+  "limitations": [
+    "Partial raw inventory only; no complete production acceptance validation or DQ reconciliation is possible.",
+    "SQLite projection validator requires a completed generation manifest.",
+    "No resume/checkpoint support in the generator; restart requires fresh output or explicit overwrite of marked output."
+  ],
+  "manifest_exists": false,
+  "maximum_rss_kib": null,
+  "partial_duplicate_ticket_copies": 11999,
+  "partial_operated_current_trips": 2921,
+  "partial_operational_departures": 2979,
+  "partial_service_dates": [
+    "2025-01-01",
+    "2025-01-14"
+  ],
+  "passed_count": 1,
+  "physical_csv_inventory": [
+    {
+      "bytes": 290579,
+      "path": "raw/context_events/part-000.csv",
+      "rows": 179,
+      "sha256": "91b40935674a9257a05b5a44b80807ebba3d0a2443bfb8fa7c0ab9af0b22dd99"
+    },
+    {
+      "bytes": 30397285,
+      "path": "raw/delays/part-000.csv",
+      "rows": 16324,
+      "sha256": "b6ad8d414ced27c5a46c7ea261482332f79aa2aadb89286d01575010c7ecb481"
+    },
+    {
+      "bytes": 50739312,
+      "path": "raw/demand_requests/part-000.csv",
+      "rows": 25000,
+      "sha256": "41bbf8a894dd3bd690e460e2759fabd410a402cd89f9a11cf69b8e8c2d54a162"
+    },
+    {
+      "bytes": 50739312,
+      "path": "raw/demand_requests/part-001.csv",
+      "rows": 25000,
+      "sha256": "5ca3b1619ac169d4b22ab068bcf8efeb135bce7ede65906b98459736867e0fc8"
+    },
+    {
+      "bytes": 2821650,
+      "path": "raw/demand_requests/part-002.csv",
+      "rows": 1391,
+      "sha256": "c1ca058cca4c2a5a74ffa010eda220083ec8c3b8ec5d4479fa2f4fbda1054cc3"
+    },
+    {
+      "bytes": 19167225,
+      "path": "raw/gps_events/part-000.csv",
+      "rows": 11681,
+      "sha256": "e2731b1763ac38dada1512ee27bb8bfc71367e177f9bf5b9f7d7e909176204fc"
+    },
+    {
+      "bytes": 49247027,
+      "path": "raw/passenger_counts/part-000.csv",
+      "rows": 25000,
+      "sha256": "099208d7b5a13e1ce0e4b170575923e92530be201748c7b6ef931b30b63842a3"
+    },
+    {
+      "bytes": 49247175,
+      "path": "raw/passenger_counts/part-001.csv",
+      "rows": 25000,
+      "sha256": "c4210311ac0bebde6f8c1c5599519b0ed1b8fe44cdddbc4e7d91ae99a0ae4d08"
+    },
+    {
+      "bytes": 16201013,
+      "path": "raw/passenger_counts/part-002.csv",
+      "rows": 8227,
+      "sha256": "9fd800d01929657e56e5ddda0d8a45965537ee0d071ab8ca7a00acc464688c89"
+    },
+    {
+      "bytes": 61764094,
+      "path": "raw/passenger_journeys/part-000.csv",
+      "rows": 25000,
+      "sha256": "ddfb6f12fa342b022f8853c5bba8d5c2692a9ee05ec6c1a1ba92301c906d7ca7"
+    },
+    {
+      "bytes": 61764338,
+      "path": "raw/passenger_journeys/part-001.csv",
+      "rows": 25000,
+      "sha256": "144e62bace740e1c8ae454c9395a7762b53cb357fe2d0baeb228ca14acef97ca"
+    },
+    {
+      "bytes": 3437577,
+      "path": "raw/passenger_journeys/part-002.csv",
+      "rows": 1392,
+      "sha256": "ecabad29f1345646e6fde41504fad86ab89739835e86b3180fd3b86b03ab34d2"
+    },
+    {
+      "bytes": 2172489,
+      "path": "raw/passenger_transfer_events/part-000.csv",
+      "rows": 1204,
+      "sha256": "8bf1c1fadea0a12ee3097ddd03a53295ed1c1c5f71fd68e972126070db8676f7"
+    },
+    {
+      "bytes": 27983978,
+      "path": "raw/passengers/part-000.csv",
+      "rows": 25000,
+      "sha256": "252ed50d129bafb7c3a277f09f6c0d5904b976c376ce7dda6a7c7a7ce09f163c"
+    },
+    {
+      "bytes": 27983980,
+      "path": "raw/passengers/part-001.csv",
+      "rows": 25000,
+      "sha256": "a39014db254181c975700ed9576fb53cddc48777aa190b614633f93516ec938c"
+    },
+    {
+      "bytes": 27983982,
+      "path": "raw/passengers/part-002.csv",
+      "rows": 25000,
+      "sha256": "80c629eae7dbee986696eb3bc486a8d8c0c3cd5a6353b08537ec2a0b4c2b4585"
+    },
+    {
+      "bytes": 5590911,
+      "path": "raw/passengers/part-003.csv",
+      "rows": 4998,
+      "sha256": "aa8311cc941eb80a69a23d9aa4a31c4cd0963a3ec0a72c5bfaecf8cd4cf316d0"
+    },
+    {
+      "bytes": 396851,
+      "path": "raw/route_patterns/part-000.csv",
+      "rows": 318,
+      "sha256": "2ed137d35db03f80e5555975bb3d1ff089c6f4768f6f4b022d8d23fac4a27d28"
+    },
+    {
+      "bytes": 9263414,
+      "path": "raw/route_stops/part-000.csv",
+      "rows": 6395,
+      "sha256": "7d57301efc6ed65af97e0b241ba08d02f7edc8bd87a71aa4c2ac36be15480276"
+    },
+    {
+      "bytes": 136529,
+      "path": "raw/routes/part-000.csv",
+      "rows": 118,
+      "sha256": "01a5b7a449e9c113a4886ca29d8b2cd2b04c4d4dbe907bc2caa242de5bda6c21"
+    },
+    {
+      "bytes": 32387773,
+      "path": "raw/schedule_stop_times/part-000.csv",
+      "rows": 25000,
+      "sha256": "c87def38b56217636192a45b030ee84f6e0fe9c2630c6ccfdf359030898191d5"
+    },
+    {
+      "bytes": 32387281,
+      "path": "raw/schedule_stop_times/part-001.csv",
+      "rows": 25000,
+      "sha256": "a7bda6a9e4c083ef525ae697f83253f5ae1c74e32553dbd9f43d74dfa2d0a28d"
+    },
+    {
+      "bytes": 2562432,
+      "path": "raw/schedule_stop_times/part-002.csv",
+      "rows": 1980,
+      "sha256": "0d97cc4673f84ffeab0b1fcb392421d19b04126a625a7b1c509f03961802518e"
+    },
+    {
+      "bytes": 3605224,
+      "path": "raw/schedules/part-000.csv",
+      "rows": 2595,
+      "sha256": "eb620bb369d2b4d4ec09bd91f0ee479a8a1ab3a72bd38715ae019d5e9c816762"
+    },
+    {
+      "bytes": 15293,
+      "path": "raw/service_calendar/part-000.csv",
+      "rows": 11,
+      "sha256": "a7d4a16ee611b170845f4a4ffc7d8b0b59679032cdb70e6680e61f3a390b38f2"
+    },
+    {
+      "bytes": 281063,
+      "path": "raw/service_exceptions/part-000.csv",
+      "rows": 204,
+      "sha256": "83e5b1a9dde97a9c05f5fb5ce5c70d4df9f36c91836f8234ef6e5b53ff88f83e"
+    },
+    {
+      "bytes": 748204,
+      "path": "raw/stops/part-000.csv",
+      "rows": 643,
+      "sha256": "1097d1408afd1c331905920c2a422cba0fe66f9f8ab8e4bf0a2e236e818e735b"
+    },
+    {
+      "bytes": 54363135,
+      "path": "raw/tickets/part-000.csv",
+      "rows": 25000,
+      "sha256": "13f62f5b6df6b6f4382438bdebca894c0092c6efd078028c7e69ccaa2a8ac1de"
+    },
+    {
+      "bytes": 54363063,
+      "path": "raw/tickets/part-001.csv",
+      "rows": 25000,
+      "sha256": "9b36441b0b42b3e3474e480fccee8f0a2b59e7d51b64694d96bd95654239f6ef"
+    },
+    {
+      "bytes": 29109664,
+      "path": "raw/tickets/part-002.csv",
+      "rows": 13389,
+      "sha256": "b0385fa3be0f5ee7460212d9a17bf6a33fe6370be371aeda8fe4c6902e94c9e5"
+    },
+    {
+      "bytes": 53237710,
+      "path": "raw/trip_stop_events/part-000.csv",
+      "rows": 25000,
+      "sha256": "93acae8633cb37c023733be5dd98b1654be4f7c4f485e17ae3d34ba58de70260"
+    },
+    {
+      "bytes": 53240908,
+      "path": "raw/trip_stop_events/part-001.csv",
+      "rows": 25000,
+      "sha256": "10cddfc9caba5e0dec6a1342631a36d286c01da4e1aae34873285d5d37f7f0f0"
+    },
+    {
+      "bytes": 23278519,
+      "path": "raw/trip_stop_events/part-002.csv",
+      "rows": 10921,
+      "sha256": "06bdc2c0c356d5b950eb569ca576cb6a94d43fc08c620405f2db35b432ff3f91"
+    },
+    {
+      "bytes": 9692826,
+      "path": "raw/trip_vehicle_assignments/part-000.csv",
+      "rows": 6094,
+      "sha256": "41cb1f9ddd781bf5b109e7e7aff74ecb73298cef99af98d105d5bc19aa359ba0"
+    },
+    {
+      "bytes": 8172851,
+      "path": "raw/trips/part-000.csv",
+      "rows": 3056,
+      "sha256": "0c7245136d74a8d9f0cfdd132d651bef1bf5d5d64793aa0b6052291c59288b21"
+    },
+    {
+      "bytes": 358655,
+      "path": "raw/vehicles/part-000.csv",
+      "rows": 314,
+      "sha256": "adbfbb3484e48db0ec305e953a86adfa37e8f1f0ca91b5c4555fc182f3dba93d"
+    }
+  ],
+  "profile": "production",
+  "raw_counts": {
+    "context_events": 179,
+    "delays": 16324,
+    "demand_requests": 51391,
+    "gps_events": 11681,
+    "passenger_counts": 58227,
+    "passenger_journeys": 51392,
+    "passenger_transfer_events": 1204,
+    "passengers": 79998,
+    "route_patterns": 318,
+    "route_stops": 6395,
+    "routes": 118,
+    "schedule_stop_times": 51980,
+    "schedules": 2595,
+    "service_calendar": 11,
+    "service_exceptions": 204,
+    "stops": 643,
+    "tickets": 63389,
+    "trip_stop_events": 60921,
+    "trip_vehicle_assignments": 6094,
+    "trips": 3056,
+    "vehicles": 314
+  },
+  "remaining_disk_bytes": 72729677824,
+  "run_id": "RUNf8a9da32ff898cda7dc30dbe3d1a2ccc7df94a5d1246dce2e9629382c6c28035",
+  "seed": 20260924,
+  "status": "INTERRUPTED_FOR_CONFIRMED_INTEGRITY_DEFECT",
+  "stop_reason": "Deliberate interrupt after confirming GPS assignment-phase corruption; no generator exception or resource failure.",
+  "wall_seconds_to_last_progress": 260.44
+}

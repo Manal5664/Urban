@@ -20,6 +20,7 @@ class VehicleDutyAllocator:
         self.reservations = {}
         self.day = None
         self.peak_reservations = 0
+        self.cursor = 0
 
     def allocate(self, service_date, start, end, *, exclude=(), different_capacity=None):
         start, end = parse_utc(start), parse_utc(end)
@@ -36,7 +37,8 @@ class VehicleDutyAllocator:
                 if vehicle['operational_status'] == 'AVAILABLE'
                 and date.fromisoformat(vehicle['commissioned_on']) <= service_date
                 and (not vehicle.get('retired_on') or service_date < date.fromisoformat(vehicle['retired_on']))]
-        for vehicle in self.eligible:
+        candidates = self.eligible[self.cursor:] + self.eligible[:self.cursor]
+        for vehicle in candidates:
             key = vehicle['vehicle_id']
             if key in exclude or vehicle['nominal_capacity'] == different_capacity:
                 continue
@@ -45,6 +47,7 @@ class VehicleDutyAllocator:
                 continue
             intervals.append((start, end))
             self.peak_reservations = max(self.peak_reservations, sum(bool(v) for v in self.reservations.values()))
+            self.cursor = (self.vehicles.index(vehicle) + 1) % len(self.vehicles)
             return vehicle
         raise RuntimeError(f'fleet infeasible: no eligible vehicle for {service_date} {start}–{end}; '
                            f'fleet={len(self.vehicles)}, buffer={self.buffer.total_seconds()} seconds')

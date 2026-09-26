@@ -1,0 +1,11 @@
+{
+  "name": "urbantransit-iq-dashboard-foundation",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Dependency-free frontend foundation for UrbanTransit IQ analytics surfaces.",
+  "type": "module",
+  "scripts": {
+    "check": "node scripts/check.mjs",
+    "preview": "python3 -m http.server 4173 --directory ."
+  }
+}

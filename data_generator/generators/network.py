@@ -72,12 +72,20 @@ def _select_stop_indices(route_index: int, direction: int, count: int, opening: 
     eligible = [index for index, stop in enumerate(stops) if date.fromisoformat(stop["opened_on"]) <= opening]
     if not eligible:
         eligible = list(range(min(5, len(stops))))
-    start = (route_index * 3 + direction * 2) % len(eligible)
+    if config.is_smoke:
+        start = (route_index * 3 + direction * 2) % len(eligible)
+        stride = 2
+    else:
+        # Spread every production pattern across the complete eligible stop
+        # population. The former fixed step repeatedly selected a small subset
+        # of stops, leaving valid later-opening stops unused by service.
+        start = (route_index * 11 + direction * 17 + opening.toordinal()) % len(eligible)
+        stride = max(1, len(eligible) // count)
     result: List[int] = []
     for step in range(count):
         # A connected synthetic path; repeated physical stops are allowed on a
         # loop, but sequence numbers remain unique.
-        result.append(eligible[(start + step * 2) % len(eligible)])
+        result.append(eligible[(start + step * stride) % len(eligible)])
     return result
 
 

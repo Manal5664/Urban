@@ -1,0 +1,11 @@
+test_delay_scope_uses_recorded_observation_for_early_arrival (tests.test_production_validator_fixes.ProductionValidatorFixTests) ... ok
+test_dq10_fixture_is_capacity_violation_not_conservation_failure (tests.test_production_validator_fixes.ProductionValidatorFixTests) ... ok
+test_existing_dq01_reference_is_validated_without_mutating_row (tests.test_production_validator_fixes.ProductionValidatorFixTests) ... ok
+test_metadata_hash_is_remeasured_during_reuse (tests.test_production_validator_fixes.ProductionValidatorFixTests) ... ok
+test_vehicle_sequences_are_numeric (tests.test_production_validator_fixes.ProductionValidatorFixTests) ... ok
+test_creates_hardlinked_immutable_version_and_dq01_manifest (tests.test_production_remediation.ProductionRemediationTests) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.015s
+
+OK

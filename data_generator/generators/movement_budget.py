@@ -38,7 +38,12 @@ def metadata_demand(ctx, spec, network, service):
                  if not (spec.incomplete and i == n) and not (spec.skipped_stop and i == 2)]
     row = {'scheduled_start_utc': utc_from_local(spec.service_date, int(spec.schedule['departure_offset_sec'])),
            'route_id': spec.pattern['route_id']}
-    base = demand_base(ctx, spec, row, network.route_stops_by_pattern[spec.pattern['pattern_id']], record_scenarios=False)
+    base = demand_base(
+        ctx, spec, row,
+        network.route_stops_by_pattern[spec.pattern['pattern_id']],
+        record_scenarios=False,
+        event_applies_override=spec.event_id is not None,
+    )
     return base, sequences
 
 

@@ -47,6 +47,22 @@ class TripSpec:
     old_row: dict = field(default_factory=dict)
 
 
+def _applicable_event_id(context_events, pattern, route_stops, scheduled_start):
+    """Return a deterministic event that physically applies to this trip."""
+    start = parse_utc(scheduled_start)
+    first_stop_id = route_stops[0]["stop_id"] if route_stops else None
+    applicable = []
+    for event in context_events:
+        if not (parse_utc(event["starts_at_utc"]) <= start <= parse_utc(event["ends_at_utc"])):
+            continue
+        if event["scope"] == "ROUTE" and event.get("route_id") != pattern["route_id"]:
+            continue
+        if event["scope"] == "STOP" and event.get("stop_id") != first_stop_id:
+            continue
+        applicable.append(event["context_event_id"])
+    return min(applicable) if applicable else None
+
+
 def _service_dates(config: GeneratorConfig) -> List[date]:
     # Four dates per month, including each month-end boundary fixture.
     result: List[date] = []
@@ -80,10 +96,6 @@ def _build_production_trip_specs(ctx: GenerationContext, network, service, conte
     config = ctx.config
     target = config.target_scale.get("operational_departures", 120_000)
     dates = list(config.dates())
-    event_by_month: Dict[Tuple[int, int], List[str]] = {}
-    for event in context_events:
-        event_day = date.fromisoformat(event["starts_at_utc"][:10])
-        event_by_month.setdefault((event_day.year, event_day.month), []).append(event["context_event_id"])
     specs: List[TripSpec] = []
     compatible = {}
     for day_index, service_date in enumerate(dates):
@@ -119,7 +131,8 @@ def _build_production_trip_specs(ctx: GenerationContext, network, service, conte
                 old_pattern = candidates[-1] if candidates else pattern
                 old_candidates = service.compatible_schedules(old_pattern["pattern_id"], service_date, historical=True, active_ids=active_ids)
                 old_schedule = old_candidates[slot % len(old_candidates)] if old_candidates else schedule
-            month_events = event_by_month.get((service_date.year, service_date.month), [])
+            scheduled_start = utc_from_local(service_date, int(schedule["departure_offset_sec"]))
+            route_stops = network.route_stops_by_pattern[pattern["pattern_id"]]
             spec = TripSpec(
                 index=index, service_date=service_date, route_index=network.routes.index(route), direction_id=direction,
                 pattern=pattern, schedule=schedule, operational_id=op_id, instance_index=slot, slot_index=slot,
@@ -128,7 +141,7 @@ def _build_production_trip_specs(ctx: GenerationContext, network, service, conte
                 delayed=index % 4 == 0, overcrowd=index % 19 == 5, low_demand=index % 10 == 1,
                 bunching=index % 11 == 4, bottleneck=index % 13 == 7, unknown_vehicle=index == 5,
                 incomplete=index == 7, skipped_stop=index == 8,
-                event_id=month_events[day_index % len(month_events)] if month_events else None,
+                event_id=_applicable_event_id(context_events, pattern, route_stops, scheduled_start),
                 service_id=schedule["service_id"], current_trip_id=trip_id(op_id, 2 if revision else 1, namespace=config.identity_namespace),
                 old_trip_id=trip_id(op_id, 1, namespace=config.identity_namespace) if revision else "",
             )

@@ -51,3 +51,20 @@
 - SRS §1.9.1 lists “500 GB Hard Disk space” without defining mandatory VM runtime/free-space scope; no automatic non-compliance finding. Cleaning, full ML leakage checks, HDFS/Spark and Parquet remain subsequent processing work.
 - Evidence and file inventory: `documentation/PREPRODUCTION_REVIEW.md`, `reports/production_preflight.json`. `raw_data/` remains only `.gitkeep`; official PDF hash unchanged during review. No commit/push.
 - Result: NOT READY FOR FULL PRODUCTION GENERATION.
+
+
+## Final cross-check / interrupted production run — 2026-09-25
+
+- **Starting state:** Clean Git status at `69d4847f780fae781173d34bb5421994e0a3e7d5`; `raw_data/` held only `.gitkeep`. Official ignored PDF hash remained `841d9c1969e9849d63d3f2fb52292f2a817d4c8111605ab8781aea68a88fb999`.
+- **Cross-check:** Confirmed interconnected trip simulation, deterministic budgets and streamed 25,000-row shards. Initial preflight 11/11; existing suite 27/27. Fixed production passenger-cursor reset before generation and verified deterministic pool coverage/non-overlap.
+- **Command:** `/usr/bin/time -v -o reports/production_generation_time.txt python3 -m data_generator.generate --profile production --output raw_data/production-v1 --allow-production --seed 20260924 --timestamp 2026-09-25T00:00:00Z > reports/production_generation.log 2>&1`.
+- **Run:** `RUNf8a9da32ff898cda7dc30dbe3d1a2ccc7df94a5d1246dce2e9629382c6c28035`, profile `production`, seed `20260924`. Immediate pre-run free disk 73,881,026,560 bytes; unmodified 55 GiB safety gate passed.
+- **Result:** Deliberately interrupted with exit 130 after 2,975 logged departures. The bounded checker uncovered GPS pre-handover observations assigned to the outgoing vehicle. Partial physical output confirms 120 assignment-time violations. This was an integrity stop, not a disk failure or a time-based cancellation.
+- **Partial data:** 858,068,095 bytes across 38 files (36 raw CSV shards); 51,392 raw journeys, 63,389 raw tickets, 11,999 measured duplicate ticket copies, 2,979 physical operational identities and 2,921 current non-cancelled trip rows. Service dates span 2025-01-01 through 2025-01-14. Buffered dimension/fact tails were not fully flushed. All 21 actual table counts and per-CSV SHA-256 digests are in `reports/production_interruption.json`. No final manifest or DQ reconciliation was produced.
+- **Resource measurement:** Approximately 260.44 seconds through the final progress line; complete duration and maximum RSS unavailable because the interrupted process group left `/usr/bin/time` output empty. Inventory observed 72,729,677,824 bytes free.
+- **Correction:** GPS now obtains vehicle attribution from the stop event's arrival/departure phase. Regression first failed for both smoke and production paths, then passed. Source fixes do not modify the preserved partial files.
+- **Final tests:** 29 passed, 0 failed in 125.689 seconds. Post-correction production preflight 11 passed, 0 failed. Compilation and whitespace checks passed. Targeted physical partial inspection: 1 passed, 1 failed. Full physical production acceptance validation remains unperformed because generation is incomplete.
+- **Status:** No automatic restart, no manual raw repair, no successful full-production claim, and no checklist completion updates. Generator has no resume support; a later run needs a fresh directory or explicit generator overwrite of its marked directory. See `documentation/PRODUCTION_GENERATION_RESULT.md`.
+- **Scope:** No HDFS/Spark, Parquet, models, system configuration changes, installations, Docker, sudo, commit or push. Source fixes, tests, bounded validation scripts and reports remain uncommitted; raw output remains ignored.
+
+NOT READY FOR HDFS/SPARK INGESTION

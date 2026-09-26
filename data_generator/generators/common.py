@@ -76,6 +76,7 @@ class GenerationContext:
     notes: List[str] = field(default_factory=list, init=False)
     fixture_refs: Dict[str, str] = field(default_factory=dict, init=False)
     passenger_busy_intervals: Dict[str, List[Tuple[str, str]]] = field(default_factory=dict, init=False)
+    passenger_cursor: int = field(default=0, init=False)
 
     def __post_init__(self) -> None:
         self.source_id = entity_id("Source", "synthetic-generator-v1", namespace=self.config.identity_namespace)

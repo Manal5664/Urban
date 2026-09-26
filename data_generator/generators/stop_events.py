@@ -215,7 +215,8 @@ def _build_actual_times(ctx: GenerationContext, spec: TripSpec, start: str, stop
     return result, replacement_sequence if spec.replacement else None, handover
 
 
-def demand_base(ctx, spec, current_row, route_stop_rows, *, record_scenarios=True):
+def demand_base(ctx, spec, current_row, route_stop_rows, *, record_scenarios=True,
+                event_applies_override=None):
     """Shared demand formula for fact generation and row-free preflight."""
     base = 4 + (spec.index % 4)
     if spec.low_demand:
@@ -224,9 +225,20 @@ def demand_base(ctx, spec, current_row, route_stop_rows, *, record_scenarios=Tru
         base = 24
     if spec.replacement:
         base = max(base, 8)
-    event_at_trip = _context_event_applies(ctx, spec, current_row["scheduled_start_utc"], current_row.get("route_id"), route_stop_rows[0].get("stop_id"))
+    if event_applies_override is None:
+        event_at_trip = _context_event_applies(
+            ctx, spec, current_row["scheduled_start_utc"],
+            current_row.get("route_id"), route_stop_rows[0].get("stop_id"),
+        )
+    else:
+        event_at_trip = spec.event_id if event_applies_override else None
     if event_at_trip:
-        base += 4
+        if ctx.config.is_smoke:
+            base += 4
+        else:
+            # Special events model concentrated demand surges. Apply the
+            # production multiplier before ordinary temporal effects.
+            base = max(base + 4, int(round(base * 2.0)))
         if record_scenarios:
             ctx.scenario("event_demand_spike")
     # Seasonal, weekday/weekend, peak, direction, and isolated spike hooks are
@@ -691,9 +703,13 @@ def simulate_trip(ctx: GenerationContext, spec: TripSpec, network, service, vehi
     # Generate the passenger flow and the linked journey/ticket/request streams.
     # A local allocator avoids overlaps without a global journey object store.
     allocator = PassengerAllocator(passenger_ids, ctx.passenger_busy_intervals)
+    if not ctx.config.is_smoke:
+        allocator.cursor = ctx.passenger_cursor
     _counts_and_journeys(ctx, spec, bundle, current, route_stop_rows, observed, replacement_sequence,
                           incoming_assignment, outgoing_assignment, incoming_vehicle["nominal_capacity"],
                           outgoing_capacity, unknown_stop_sequence, passenger_ids, allocator)
+    if not ctx.config.is_smoke:
+        ctx.passenger_cursor = allocator.cursor % len(passenger_ids)
     # Add GPS anchors after actual timing/assignments are known.
     _add_gps(ctx, spec, bundle, network, route_stop_rows, observed, incoming_assignment, outgoing_assignment, unknown_stop_sequence)
     observed_events = [item for item in observed if item["status"] == "OBSERVED"]
@@ -756,12 +772,14 @@ def _add_gps(ctx: GenerationContext, spec: TripSpec, bundle: TripBundle, network
     observed_events = [item for item in observed if item["status"] == "OBSERVED"]
     if not observed_events:
         return
+    phase_events = {row["stop_sequence"]: row for row in bundle.stop_events
+                    if row["trip_id"] == spec.current_trip_id}
     anchors = [observed_events[0], observed_events[len(observed_events) // 2], observed_events[-1]]
     for index, item in enumerate(anchors):
         sequence = int(item["stop_time"]["stop_sequence"])
         lat, lon, distance = _stop_coordinates(network, route_stop_rows, sequence)
         observed_at = item["arrival"] if index == 0 else (item["departure"] or item["arrival"])
-        assignment = incoming_assignment if index == 0 else outgoing_assignment
+        assignment = phase_events[sequence]["arrival_assignment_id" if index == 0 else "departure_assignment_id"]
         known = sequence != unknown_stop_sequence
         gps_id = entity_id("GpsEvent", {"trip_id": spec.current_trip_id, "index": index, "kind": "anchor"}, namespace=ctx.config.identity_namespace)
         row = ctx.base("gps_events", observed_at, ingestion_time=add_seconds(observed_at, 3), quality_status="VALID" if known else "FLAGGED", unresolved_reason=None if known else "UNKNOWN_VEHICLE")
@@ -792,7 +810,7 @@ def _add_gps(ctx: GenerationContext, spec: TripSpec, bundle: TripBundle, network
         row.update({
             "gps_event_id": entity_id("GpsEvent", {"trip_id": spec.current_trip_id, "index": index, "kind": "targeted"}, namespace=ctx.config.identity_namespace),
             "trip_id": spec.current_trip_id,
-            "assignment_id": outgoing_assignment if known else None,
+            "assignment_id": phase_events[sequence]["departure_assignment_id"] if known else None,
             "assignment_status": "KNOWN" if known else "UNKNOWN",
             "stop_event_id": _stop_event_id(ctx, spec.current_trip_id, sequence),
             "service_date": spec.service_date.isoformat(),

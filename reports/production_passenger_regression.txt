@@ -1,0 +1,6 @@
+test_separate_trips_cover_population_deterministically (test_production_passenger_coverage.PassengerCoverageTests) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 3.362s
+
+OK

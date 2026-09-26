@@ -183,7 +183,7 @@
     "request_rows": 2499999
   },
   "resources": {
-    "free_bytes": 74479419392,
+    "free_bytes": 72729698304,
     "planning_raw_upper_bytes": 43969689354,
     "planning_total_bytes": 123592954249,
     "raw_generation_disk_guard_bytes": 59055800320,
