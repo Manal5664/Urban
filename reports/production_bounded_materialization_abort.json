@@ -1,57 +1,16 @@
 {
-  "closure_audit": {
-    "conservative_floor_bytes": 9115596717,
-    "event_bundle_closure_bytes": 1996442189,
-    "exceeds_bound": true,
-    "method": "read-only physical shard closure audit; no corrected target created",
-    "minimum_changed_request_shards": 64,
-    "minimum_changed_ticket_shards": 64,
-    "note": "Ticket and demand-request stop IDs cannot be skipped without breaking the required ticket/journey/demand relationships and DQ/provenance checks. Additional GPS/metadata/staging bytes are not needed to establish the failure.",
-    "observed_positions_journey_bearing": true,
-    "request_bytes_for_64_largest_shards": 3249413938,
-    "stop_overlay_required_positions": 208,
-    "stop_relationship_floor_bytes": 6728660326,
-    "ticket_bytes_for_64_largest_shards": 3479246388,
-    "vehicle_closure_bytes": 390494202
-  },
-  "materialization_result": {
-    "additional_disk_bytes": 0,
-    "changed_row_count": 0,
-    "corrected_dataset_path": null,
-    "hard_linked_file_count": 0,
-    "newly_materialized_file_count": 0
-  },
-  "planner_envelope_only": {
-    "baseline_mean": 20.39449,
-    "canonical_movements": 2400000,
-    "event_demand_check": "PASS",
-    "event_mean": 27.50885,
-    "planned_used_stops": 607,
-    "planned_used_vehicles": 311
-  },
-  "reason": "Measured transitive closure exceeds the approved bounded raw/staging addition; preserving ticket/journey/demand stop identity requires rewriting the full affected shards.",
-  "scope": {
-    "commit_or_push": false,
-    "full_physical_validator_run": false,
-    "hdfs_spark_ml_frontend_run": false,
-    "new_sqlite_projection_created": false
-  },
-  "source_immutability": {
-    "generation_manifest_sha256": "62014ea40c6f622e7e2a88c18734f46cd683016827d6177f8196765c59afccb2",
-    "inventory_file_count": 611,
-    "inventory_sha256": "2271ce9dbe6f83bf2fa6b29a9205369600af2631c1a426fda644c7f83ff964d6",
-    "path": "raw_data/production-v1",
-    "private_injection_manifest_sha256_measured": "fe33932a4cc8ac7b508cc38bf3aca86aa92018bacac4834d4a7ebd2f8a62785a",
-    "unchanged": true
-  },
-  "status": "ABORTED_SAFE_BEFORE_TARGET_CREATION",
-  "storage_preflight": {
-    "approved_bounded_raw_staging_bound_bytes": 2800000000,
-    "free_bytes_at_report": 31932166144,
-    "free_bytes_before_abort": 31932166144,
-    "hardlink_probe": "PASS",
-    "same_filesystem": true,
-    "source_device": 2051,
-    "target_parent_device": 2051
-  }
+  "abort_time": "2026-09-24T11:57:12.345Z",
+  "phase": "materialize_tickets",
+  "completed_shards": 94,
+  "total_shards": 120,
+  "interrupted_shard": 95,
+  "interrupted_shard_path": "raw_data/production-v1.1/raw/tickets/.part-095.csv.remediation-tmp",
+  "interrupted_shard_size_bytes": 0,
+  "source_dataset": "raw_data/production-v1",
+  "destination_dataset": "raw_data/production-v1.1",
+  "remediation_plan": "reports/remediation_plan_20260924_115712.json",
+  "disk_free_gb_at_abort": 10.2,
+  "disk_total_gb": 98,
+  "disk_used_gb": 87.8,
+  "notes": "Shutdown during ticket shard 95 materialization. Previous shards 1-94 completed and verified. No other .remediation-tmp files detected at abort time."
 }
